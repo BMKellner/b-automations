@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import ScrollyVideo from 'scrolly-video/dist/ScrollyVideo.cjs.jsx';
@@ -97,34 +98,26 @@ export default function ScrollVideoSection({
                     transition: 'opacity 0.3s ease-out',
                   }}
                 >
-                  <div className="text-center space-y-6 max-w-3xl pointer-events-auto">
-                    {content.badge && (
-                      <Badge className="mb-2 text-sm px-4 py-1" variant="secondary">
-                        {content.badge}
-                      </Badge>
-                    )}
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl">
-                      {content.title}
-                    </h2>
-                    {content.description && (
-                      <p className="text-xl md:text-2xl text-white/90 drop-shadow-xl">
-                        {content.description}
-                      </p>
-                    )}
-                    {content.showButtons && (
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                        <Button size="lg" className="text-lg px-8 py-6 rounded-full">
-                          Get Started
-                        </Button>
-                        <Button
-                          size="lg"
-                          variant="outline"
-                          className="text-lg px-8 py-6 rounded-full bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20 hover:text-white"
-                        >
-                          Learn More
-                        </Button>
+                  <div className="text-center max-w-3xl pointer-events-auto flex flex-col items-center justify-center min-h-[400px] md:min-h-[500px]">
+                    <div className="space-y-6">
+                      {content.badge && (
+                        <Badge className="mb-2 text-sm px-4 py-1" variant="secondary">
+                          {content.badge}
+                        </Badge>
+                      )}
+                      <div className="min-h-[200px] md:min-h-[250px] flex items-center justify-center">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl">
+                          {content.title}
+                        </h2>
                       </div>
-                    )}
+                      {content.description && (
+                        <div className="min-h-[100px] md:min-h-[120px] flex items-center justify-center">
+                          <p className="text-xl md:text-2xl text-white/90 drop-shadow-xl">
+                            {content.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               );

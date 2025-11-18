@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import ScrollVideoSection from '@/components/ScrollVideoSection';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -143,12 +144,16 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg" className="text-lg px-8 py-6">
-                Schedule Consultation
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-                Explore Case Studies
-              </Button>
+              <Link href="/how-it-works">
+                <Button size="lg" className="text-lg px-8 py-6">
+                  Book a Consultation
+                </Button>
+              </Link>
+              <Link href="/case-studies">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+                  Explore Case Studies
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
