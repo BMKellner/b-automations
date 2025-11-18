@@ -81,9 +81,8 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `apps/docs`: a [Next.js](https://nextjs.org/) app
 - `apps/api`: a [Nestjs](https://nodejs.org/) app
-- `apps/web`: another [Next.js](https://nextjs.org/) app
+- `apps/web`: a [Next.js](https://nextjs.org/) app
 - `apps/database`: the Prisma database ORM configuration
 - `packages/ui`: a stub React component library shared by both `web` and `docs` applications
 - `packages/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
