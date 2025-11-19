@@ -62,15 +62,15 @@ export default function Home() {
       />
 
       {/* Services & Contact Section */}
-      <section className="relative min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 flex items-center justify-center px-8 py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto w-full space-y-16 relative">
+      <section className="relative min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full space-y-12 sm:space-y-16 relative">
           {/* Subtle background glow */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06),transparent_70%)] blur-3xl" />
           </div>
 
           {/* Services */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 relative z-10">
             {[
               {
                 title: 'Enterprise AI Integration',
@@ -123,7 +123,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl md:text-4xl font-bold text-white"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white px-4"
             >
               Scale Your Operations Intelligently
             </motion.h3>
@@ -132,7 +132,7 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-zinc-400 text-lg max-w-2xl mx-auto"
+              className="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto px-4"
             >
               Partner with industry leaders who trust <span className="text-blue-400 font-semibold">B Automations</span> to deliver mission-critical automation infrastructure
             </motion.p>
@@ -141,15 +141,15 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
             >
-              <Link href="/consultation">
-                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-lg">
+              <Link href="/consultation" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-base sm:text-lg">
                   Book a Consultation
                 </button>
               </Link>
-              <Link href="/case-studies">
-                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-lg">
+              <Link href="/case-studies" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-base sm:text-lg">
                   Explore Case Studies
                 </button>
               </Link>
@@ -159,9 +159,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>

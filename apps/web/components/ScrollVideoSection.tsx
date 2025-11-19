@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -25,6 +25,7 @@ interface ScrollVideoSectionProps {
 /**
  * Professional scroll-driven video using scrolly-video library
  * Updates continuously during scroll (not after)
+ * Optimized for mobile: uses poster image instead of video on mobile devices
  */
 export default function ScrollVideoSection({
   videoSrc,
@@ -34,13 +35,58 @@ export default function ScrollVideoSection({
 }: ScrollVideoSectionProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isReady, setIsReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Detect mobile device and handle scroll on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || 
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
+      // On mobile, mark as ready immediately since we'll use poster image
+      if (isMobileDevice) {
+        setIsReady(true);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Manual scroll tracking for mobile (since we don't use ScrollyVideo)
+  useEffect(() => {
+    if (!isMobile || !sectionRef.current) return;
+
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.scrollY;
+      const sectionTop = rect.top + scrollTop;
+      
+      // Calculate progress based on scroll position
+      const progress = Math.max(0, Math.min(1, (scrollTop - sectionTop + windowHeight) / sectionHeight));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Use setTimeout to ensure DOM is ready
+    setTimeout(handleScroll, 100);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
 
   const handleScrollUpdate = useCallback((progress: number) => {
     setScrollProgress(progress);
-    if (!isReady && progress >= 0) {
+    if (!isReady && progress >= 0 && !isMobile) {
       setIsReady(true);
     }
-  }, [isReady]);
+  }, [isReady, isMobile]);
 
   // Calculate content opacity
   const getContentOpacity = (content: ScrollContent): number => {
@@ -63,19 +109,34 @@ export default function ScrollVideoSection({
     return 0;
   };
 
+  // Use shorter height on mobile for better performance
+  const mobileHeight = 'h-[200vh]';
+  const desktopHeight = height;
+  const sectionHeight = isMobile ? mobileHeight : desktopHeight;
+
   return (
-    <div className={`relative ${height}`}>
-      {/* Scrolly Video Component */}
-      <ScrollyVideo
-        src={videoSrc}
-        transitionSpeed={1}
-        frameThreshold={0.1}
-        cover={true}
-        sticky={true}
-        full={true}
-        trackScroll={true}
-        onChange={handleScrollUpdate}
-      />
+    <div ref={sectionRef} className={`relative ${sectionHeight}`} data-scroll-section>
+      {/* Video Component - Only load on desktop */}
+      {!isMobile && (
+        <ScrollyVideo
+          src={videoSrc}
+          transitionSpeed={1}
+          frameThreshold={0.1}
+          cover={true}
+          sticky={true}
+          full={true}
+          trackScroll={true}
+          onChange={handleScrollUpdate}
+        />
+      )}
+
+      {/* Mobile: Use poster image as background */}
+      {isMobile && posterSrc && (
+        <div 
+          className="fixed inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${posterSrc})` }}
+        />
+      )}
 
       {/* Content Overlays */}
       <div className="fixed inset-0 pointer-events-none z-10">
@@ -98,21 +159,21 @@ export default function ScrollVideoSection({
                     transition: 'opacity 0.3s ease-out',
                   }}
                 >
-                  <div className="text-center max-w-3xl pointer-events-auto flex flex-col items-center justify-center min-h-[400px] md:min-h-[500px]">
-                    <div className="space-y-6">
+                  <div className="text-center max-w-3xl pointer-events-auto flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px] px-4">
+                    <div className="space-y-4 sm:space-y-6">
                       {content.badge && (
-                        <Badge className="mb-2 text-sm px-4 py-1" variant="secondary">
+                        <Badge className="mb-2 text-xs sm:text-sm px-3 sm:px-4 py-1" variant="secondary">
                           {content.badge}
                         </Badge>
                       )}
-                      <div className="min-h-[200px] md:min-h-[250px] flex items-center justify-center">
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl">
+                      <div className="min-h-[120px] sm:min-h-[200px] md:min-h-[250px] flex items-center justify-center">
+                        <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl leading-tight">
                           {content.title}
                         </h2>
                       </div>
                       {content.description && (
-                        <div className="min-h-[100px] md:min-h-[120px] flex items-center justify-center">
-                          <p className="text-xl md:text-2xl text-white/90 drop-shadow-xl">
+                        <div className="min-h-[60px] sm:min-h-[100px] md:min-h-[120px] flex items-center justify-center">
+                          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-white/90 drop-shadow-xl px-2 sm:px-0">
                             {content.description}
                           </p>
                         </div>
@@ -126,8 +187,8 @@ export default function ScrollVideoSection({
         </div>
       </div>
 
-      {/* Loading state with poster image */}
-      {!isReady && posterSrc && (
+      {/* Loading state with poster image - Only show on desktop */}
+      {!isReady && !isMobile && posterSrc && (
         <div 
           className="fixed inset-0 flex items-center justify-center z-50 bg-cover bg-center"
           style={{ backgroundImage: `url(${posterSrc})` }}
@@ -140,8 +201,8 @@ export default function ScrollVideoSection({
         </div>
       )}
       
-      {/* Fallback loading (no poster) */}
-      {!isReady && !posterSrc && (
+      {/* Fallback loading (no poster) - Only show on desktop */}
+      {!isReady && !isMobile && !posterSrc && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
           <div className="text-center space-y-4">
             <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
