@@ -115,7 +115,7 @@ export default function HowItWorksPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center px-8 pt-32 pb-16 overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] blur-3xl" />
         </div>
@@ -124,14 +124,14 @@ export default function HowItWorksPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 text-center space-y-6 max-w-5xl"
+          className="relative z-10 text-center space-y-4 sm:space-y-6 max-w-5xl"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <Badge className="mb-4 text-sm px-4 py-1" variant="secondary">
+            <Badge className="mb-4 text-xs sm:text-sm px-3 sm:px-4 py-1" variant="secondary">
               Our Methodology
             </Badge>
           </motion.div>
@@ -139,7 +139,7 @@ export default function HowItWorksPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white"
+            className="text-3xl sm:text-5xl md:text-7xl font-bold text-white px-4"
           >
             How It <span className="text-blue-400">Works</span>
           </motion.h1>
@@ -147,7 +147,7 @@ export default function HowItWorksPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl md:text-2xl text-zinc-400 max-w-4xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-400 max-w-4xl mx-auto leading-relaxed px-4"
           >
             Every solution is handcrafted and precisely engineered to solve your unique challenges. 
             No templates. No shortcuts. Just intelligent automation built exactly for you.
@@ -156,26 +156,26 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Core Philosophy Section */}
-      <section className="relative px-8 py-24">
-        <div className="max-w-6xl mx-auto space-y-16">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6"
+            className="text-center space-y-4 sm:space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white px-4">
               Bespoke Solutions, Every Time
             </h2>
-            <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed px-4">
               Your business is unique. Your automation solution should be too. We don't adapt 
               your processes to fit our software—we build software that fits your processes perfectly.
             </p>
           </motion.div>
 
           {/* Principles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {principles.map((principle, idx) => (
               <motion.div
                 key={idx}
@@ -190,12 +190,12 @@ export default function HowItWorksPage() {
               >
                 <Card className="bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 hover:border-blue-500/30 transition-all h-full">
                   <CardHeader>
-                    <CardTitle className="text-white text-xl">
+                    <CardTitle className="text-white text-lg sm:text-xl">
                       {principle.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-zinc-400">
+                    <CardDescription className="text-zinc-400 text-sm sm:text-base">
                       {principle.description}
                     </CardDescription>
                   </CardContent>
@@ -207,26 +207,26 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Process Steps Section */}
-      <section className="relative px-8 py-24 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div className="max-w-6xl mx-auto space-y-16">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-zinc-900 to-zinc-950">
+        <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6"
+            className="text-center space-y-4 sm:space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white px-4">
               Our Custom Development Process
             </h2>
-            <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto px-4">
               A proven methodology that transforms your unique challenges into intelligent, 
               automated solutions
             </p>
           </motion.div>
 
           {/* Process Timeline */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {processSteps.map((step, idx) => (
               <motion.div
                 key={idx}
@@ -240,34 +240,34 @@ export default function HowItWorksPage() {
                 }}
               >
                 <Card className="bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 border-zinc-800 hover:border-blue-500/30 transition-all overflow-hidden">
-                  <CardHeader className="space-y-4">
-                    <div className="flex items-start gap-6">
+                  <CardHeader className="space-y-3 sm:space-y-4 p-4 sm:p-6">
+                    <div className="flex items-start gap-4 sm:gap-6">
                       <div className="flex-shrink-0">
-                        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                          <span className="text-3xl font-bold text-white">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                          <span className="text-2xl sm:text-3xl font-bold text-white">
                             {step.number}
                           </span>
                         </div>
                       </div>
-                      <div className="flex-1 space-y-2">
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                          <CardTitle className="text-white text-2xl md:text-3xl">
+                      <div className="flex-1 space-y-2 min-w-0">
+                        <div className="flex items-start sm:items-center justify-between flex-wrap gap-3 sm:gap-4">
+                          <CardTitle className="text-white text-xl sm:text-2xl md:text-3xl">
                             {step.title}
                           </CardTitle>
-                          <Badge variant="outline" className="text-blue-400 border-blue-500/30">
+                          <Badge variant="outline" className="text-blue-400 border-blue-500/30 text-xs sm:text-sm">
                             {step.duration}
                           </Badge>
                         </div>
-                        <CardDescription className="text-zinc-300 text-base leading-relaxed">
+                        <CardDescription className="text-zinc-300 text-sm sm:text-base leading-relaxed">
                           {step.description}
                         </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   
-                  <CardContent>
-                    <div className="pl-[104px]">
-                      <h4 className="text-sm font-semibold text-blue-400 mb-3">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="pl-0 sm:pl-[88px] lg:pl-[104px]">
+                      <h4 className="text-xs sm:text-sm font-semibold text-blue-400 mb-2 sm:mb-3">
                         Key Activities:
                       </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -277,7 +277,7 @@ export default function HowItWorksPage() {
                             className="flex items-start space-x-2"
                           >
                             <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                            <p className="text-zinc-400 text-sm">{detail}</p>
+                            <p className="text-zinc-400 text-xs sm:text-sm">{detail}</p>
                           </div>
                         ))}
                       </div>
@@ -291,37 +291,37 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Why Custom Section */}
-      <section className="relative px-8 py-24">
-        <div className="max-w-5xl mx-auto space-y-12">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4">
               Why Custom-Built Matters
             </h2>
-            <p className="text-lg text-zinc-400 text-center max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto px-4">
               Off-the-shelf solutions force you to change your business processes. 
               Custom solutions adapt to how you work.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 px-4">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
-              <div className="p-6 bg-red-500/10 border border-red-500/20 rounded-xl">
-                <h3 className="text-2xl font-bold text-white mb-4">
+              <div className="p-4 sm:p-6 bg-red-500/10 border border-red-500/20 rounded-xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
                   ❌ Generic Solutions
                 </h3>
-                <ul className="space-y-3 text-zinc-400">
+                <ul className="space-y-2 sm:space-y-3 text-zinc-400 text-sm sm:text-base">
                   <li className="flex items-start gap-2">
                     <span className="text-red-400 mt-1">•</span>
                     <span>Force you to adapt your processes to the software</span>
@@ -351,13 +351,13 @@ export default function HowItWorksPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
-              <div className="p-6 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                <h3 className="text-2xl font-bold text-white mb-4">
+              <div className="p-4 sm:p-6 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
                   ✓ B Automations Custom Solutions
                 </h3>
-                <ul className="space-y-3 text-zinc-400">
+                <ul className="space-y-2 sm:space-y-3 text-zinc-400 text-sm sm:text-base">
                   <li className="flex items-start gap-2">
                     <span className="text-blue-400 mt-1">•</span>
                     <span>Built around your exact workflows and processes</span>
@@ -386,9 +386,9 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>

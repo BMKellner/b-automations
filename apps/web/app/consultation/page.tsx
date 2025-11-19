@@ -78,17 +78,17 @@ export default function ConsultationPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center justify-center px-8 pt-32 pb-16">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+      <section className="relative min-h-[40vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16">
+        <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 px-4">
             Book Your <span className="text-blue-400">Consultation</span>
             </h1>
-            <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-400 max-w-3xl mx-auto px-4">
               Let's discuss how B Automations can transform your operations
             </p>
           </motion.div>
@@ -96,15 +96,15 @@ export default function ConsultationPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="relative px-8 py-12 pb-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-16 sm:pb-24">
         <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 md:p-12"
+            className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-6 sm:p-8 md:p-12"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name Field */}
               <div className="space-y-2">
                 <label htmlFor="name" className="block text-sm font-medium text-zinc-300">
@@ -117,7 +117,7 @@ export default function ConsultationPage() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors text-sm sm:text-base"
                   placeholder="Your full name"
                 />
               </div>
@@ -134,7 +134,7 @@ export default function ConsultationPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors text-sm sm:text-base"
                   placeholder="your.email@company.com"
                 />
               </div>
@@ -150,7 +150,7 @@ export default function ConsultationPage() {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors text-sm sm:text-base"
                   placeholder="Your company name"
                 />
               </div>
@@ -167,7 +167,7 @@ export default function ConsultationPage() {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors resize-none"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors resize-none text-sm sm:text-base"
                   placeholder="Tell us about your automation needs and goals..."
                 />
               </div>
@@ -176,7 +176,7 @@ export default function ConsultationPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -205,25 +205,25 @@ export default function ConsultationPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center space-y-4"
+            className="mt-8 sm:mt-12 text-center space-y-3 sm:space-y-4 px-4"
           >
-            <p className="text-zinc-400">Or reach us directly at:</p>
+            <p className="text-zinc-400 text-sm sm:text-base">Or reach us directly at:</p>
             <div className="space-y-2">
-              <p className="text-white text-lg">
+              <p className="text-white text-base sm:text-lg">
                 <a href="mailto:dbalogh@udel.edu" className="hover:text-blue-400 transition-colors">
                   dbalogh@udel.edu
                 </a>
               </p>
-              <p className="text-zinc-400">(717) 891-9419</p>
+              <p className="text-zinc-400 text-sm sm:text-base">(717) 891-9419</p>
                 </div>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>

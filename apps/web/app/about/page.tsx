@@ -11,7 +11,7 @@ export default function AboutPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center px-8 pt-32 pb-16 overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] blur-3xl" />
         </div>
@@ -20,13 +20,13 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 text-center space-y-6 max-w-4xl"
+          className="relative z-10 text-center space-y-4 sm:space-y-6 max-w-4xl"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white"
+            className="text-3xl sm:text-5xl md:text-7xl font-bold text-white px-4"
           >
             About <span className="text-blue-400">B Automations</span>
           </motion.h1>
@@ -34,7 +34,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto"
+            className="text-base sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto px-4"
           >
             Pioneering the future of enterprise automation through intelligent systems and innovative technology solutions
           </motion.p>
@@ -42,20 +42,20 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-8 py-24">
-        <div className="max-w-7xl mx-auto w-full space-y-24">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto w-full space-y-16 sm:space-y-20 lg:space-y-24">
           {/* Our Story */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-12 px-4">
               Our Mission
             </h2>
-            <p className="text-lg md:text-xl text-zinc-400 text-center max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-zinc-400 text-center max-w-4xl mx-auto leading-relaxed px-4">
               At B Automations, we believe that intelligent automation is the key to unlocking unprecedented 
               operational efficiency and business growth. Our mission is to empower organizations with 
               cutting-edge automation solutions that transform complex workflows into streamlined, 
@@ -64,18 +64,18 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Core Values */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold text-white text-center"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4"
             >
               Our Core Values
             </motion.h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {[
                 {
                   title: 'Innovation First',
@@ -103,10 +103,10 @@ export default function AboutPage() {
                 >
                   <Card className="bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 hover:border-blue-500/30 transition-all h-full">
                     <CardHeader>
-                      <CardTitle className="text-white text-2xl">{value.title}</CardTitle>
+                      <CardTitle className="text-white text-xl sm:text-2xl">{value.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-zinc-400 text-base">
+                      <CardDescription className="text-zinc-400 text-sm sm:text-base">
                         {value.description}
                       </CardDescription>
                     </CardContent>
@@ -122,12 +122,12 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4">
               Our Approach
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto px-4">
               {[
                 {
                   title: 'Strategic Discovery',
@@ -156,10 +156,10 @@ export default function AboutPage() {
                     delay: idx * 0.1,
                     ease: [0.22, 1, 0.36, 1]
                   }}
-                  className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-6 hover:border-blue-500/30 transition-all"
+                  className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 sm:p-6 hover:border-blue-500/30 transition-all"
                 >
-                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-zinc-400">{step.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{step.title}</h3>
+                  <p className="text-zinc-400 text-sm sm:text-base">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 pt-8 sm:pt-12 px-4"
           >
             {[
               { stat: '500+', label: 'Enterprise Deployments' },
@@ -189,12 +189,12 @@ export default function AboutPage() {
                   delay: idx * 0.1,
                   ease: [0.22, 1, 0.36, 1]
                 }}
-                className="text-center space-y-2"
+                className="text-center space-y-1 sm:space-y-2"
               >
-                <div className="text-5xl md:text-6xl font-bold text-blue-400">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-400">
                   {item.stat}
                 </div>
-                <div className="text-zinc-400 text-sm md:text-base">
+                <div className="text-zinc-400 text-xs sm:text-sm md:text-base">
                   {item.label}
                 </div>
               </motion.div>
@@ -204,9 +204,9 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>

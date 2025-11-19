@@ -75,7 +75,7 @@ export default function CaseStudiesPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center px-8 pt-32 pb-16 overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] blur-3xl" />
         </div>
@@ -84,14 +84,14 @@ export default function CaseStudiesPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 text-center space-y-6 max-w-4xl"
+          className="relative z-10 text-center space-y-4 sm:space-y-6 max-w-4xl"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <Badge className="mb-4 text-sm px-4 py-1" variant="secondary">
+            <Badge className="mb-4 text-xs sm:text-sm px-3 sm:px-4 py-1" variant="secondary">
               Client Success Stories
             </Badge>
           </motion.div>
@@ -99,7 +99,7 @@ export default function CaseStudiesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white"
+            className="text-3xl sm:text-5xl md:text-7xl font-bold text-white px-4"
           >
             Case <span className="text-blue-400">Studies</span>
           </motion.h1>
@@ -107,7 +107,7 @@ export default function CaseStudiesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto"
+            className="text-base sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto px-4"
           >
             Real-world automation solutions delivering measurable business impact across diverse industries
           </motion.p>
@@ -115,8 +115,8 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Section */}
-      <section className="relative px-8 py-24">
-        <div className="max-w-7xl mx-auto space-y-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20 lg:space-y-24">
           {caseStudies.map((study, idx) => (
             <motion.div
               key={study.id}
@@ -130,7 +130,7 @@ export default function CaseStudiesPage() {
               }}
             >
               <Card className="bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 overflow-hidden">
-                <CardHeader className="space-y-4">
+                <CardHeader className="space-y-3 sm:space-y-4 p-4 sm:p-6">
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="secondary" className="text-xs">
                       {study.industry}
@@ -139,38 +139,38 @@ export default function CaseStudiesPage() {
                       Case Study #{study.id}
                     </Badge>
                   </div>
-                  <CardTitle className="text-white text-3xl md:text-4xl">
+                  <CardTitle className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                     {study.title}
                   </CardTitle>
-                  <CardDescription className="text-zinc-400 text-lg">
+                  <CardDescription className="text-zinc-400 text-sm sm:text-base lg:text-lg">
                     {study.client}
                   </CardDescription>
                 </CardHeader>
                 
-                <CardContent className="space-y-8">
+                <CardContent className="space-y-6 sm:space-y-8 p-4 sm:p-6">
                   {/* Challenge */}
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-blue-400">
+                  <div className="space-y-2 sm:space-y-3">
+                    <h3 className="text-lg sm:text-xl font-semibold text-blue-400">
                       The Challenge
                     </h3>
-                    <p className="text-zinc-300 leading-relaxed">
+                    <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
                       {study.challenge}
                     </p>
                   </div>
 
                   {/* Solution */}
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-blue-400">
+                  <div className="space-y-2 sm:space-y-3">
+                    <h3 className="text-lg sm:text-xl font-semibold text-blue-400">
                       Our Solution
                     </h3>
-                    <p className="text-zinc-300 leading-relaxed">
+                    <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
                       {study.solution}
                     </p>
                   </div>
 
                   {/* Technologies */}
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-blue-400">
+                  <div className="space-y-2 sm:space-y-3">
+                    <h3 className="text-lg sm:text-xl font-semibold text-blue-400">
                       Technologies Used
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -178,7 +178,7 @@ export default function CaseStudiesPage() {
                         <Badge 
                           key={techIdx}
                           variant="outline" 
-                          className="text-zinc-300 border-zinc-700 bg-zinc-800/50"
+                          className="text-zinc-300 border-zinc-700 bg-zinc-800/50 text-xs"
                         >
                           {tech}
                         </Badge>
@@ -187,46 +187,46 @@ export default function CaseStudiesPage() {
                   </div>
 
                   {/* Results */}
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-blue-400">
+                  <div className="space-y-3 sm:space-y-4">
+                    <h3 className="text-lg sm:text-xl font-semibold text-blue-400">
                       Results & Impact
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                       {study.results.map((result, resultIdx) => (
                         <div 
                           key={resultIdx}
-                          className="flex items-start space-x-2 bg-zinc-800/30 p-3 rounded-lg border border-zinc-800"
+                          className="flex items-start space-x-2 bg-zinc-800/30 p-2 sm:p-3 rounded-lg border border-zinc-800"
                         >
                           <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                          <p className="text-zinc-300 text-sm">{result}</p>
+                          <p className="text-zinc-300 text-xs sm:text-sm">{result}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Key Metrics */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-zinc-800">
-                    <div className="text-center space-y-2">
-                      <div className="text-3xl font-bold text-blue-400">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-4 border-t border-zinc-800">
+                    <div className="text-center space-y-1 sm:space-y-2">
+                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
                         {study.metrics.efficiency}
                       </div>
-                      <div className="text-sm text-zinc-400">
+                      <div className="text-xs sm:text-sm text-zinc-400">
                         Efficiency Gain
                       </div>
                     </div>
-                    <div className="text-center space-y-2">
-                      <div className="text-3xl font-bold text-blue-400">
+                    <div className="text-center space-y-1 sm:space-y-2">
+                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
                         {study.metrics.roi}
                       </div>
-                      <div className="text-sm text-zinc-400">
+                      <div className="text-xs sm:text-sm text-zinc-400">
                         Return on Investment
                       </div>
                     </div>
-                    <div className="text-center space-y-2">
-                      <div className="text-3xl font-bold text-blue-400">
+                    <div className="text-center space-y-1 sm:space-y-2">
+                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
                         {study.metrics.engagement || study.metrics.conversion || study.metrics.coverage}
                       </div>
-                      <div className="text-sm text-zinc-400">
+                      <div className="text-xs sm:text-sm text-zinc-400">
                         {study.metrics.engagement ? 'Engagement Boost' : study.metrics.conversion ? 'Lead Growth' : 'Coverage'}
                       </div>
                     </div>
@@ -239,9 +239,9 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
