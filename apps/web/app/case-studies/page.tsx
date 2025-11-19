@@ -238,38 +238,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative px-8 py-24 bg-zinc-950">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-12 md:p-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Ready to Transform Your Operations?
-            </h2>
-            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">
-              Let's discuss how B Automations can deliver similar results for your organization
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <a href="/consultation">
-                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all">
-                  Schedule Consultation
-                </button>
-              </a>
-              <a href="/how-it-works">
-                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all">
-                  View All Solutions
-                </button>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-8">
