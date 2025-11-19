@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend with a fallback to prevent build errors when API key is missing
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder_key_for_build');
 
 // Rate limiting storage (in-memory)
 // In production, consider using Redis or a database
