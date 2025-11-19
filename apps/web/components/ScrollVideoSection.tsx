@@ -25,7 +25,7 @@ interface ScrollVideoSectionProps {
 /**
  * Professional scroll-driven video using scrolly-video library
  * Updates continuously during scroll (not after)
- * Optimized for mobile: uses poster image instead of video on mobile devices
+ * Optimized for mobile: uses reduced intensity settings for better performance
  */
 export default function ScrollVideoSection({
   videoSrc,
@@ -38,16 +38,12 @@ export default function ScrollVideoSection({
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Detect mobile device and handle scroll on mobile
+  // Detect mobile device
   useEffect(() => {
     const checkMobile = () => {
       const isMobileDevice = window.innerWidth < 768 || 
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       setIsMobile(isMobileDevice);
-      // On mobile, mark as ready immediately since we'll use poster image
-      if (isMobileDevice) {
-        setIsReady(true);
-      }
     };
 
     checkMobile();
@@ -55,38 +51,12 @@ export default function ScrollVideoSection({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Manual scroll tracking for mobile (since we don't use ScrollyVideo)
-  useEffect(() => {
-    if (!isMobile || !sectionRef.current) return;
-
-    const handleScroll = () => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const sectionHeight = rect.height;
-      const windowHeight = window.innerHeight;
-      const scrollTop = window.scrollY;
-      const sectionTop = rect.top + scrollTop;
-      
-      // Calculate progress based on scroll position
-      const progress = Math.max(0, Math.min(1, (scrollTop - sectionTop + windowHeight) / sectionHeight));
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Use setTimeout to ensure DOM is ready
-    setTimeout(handleScroll, 100);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile]);
-
   const handleScrollUpdate = useCallback((progress: number) => {
     setScrollProgress(progress);
-    if (!isReady && progress >= 0 && !isMobile) {
+    if (!isReady && progress >= 0) {
       setIsReady(true);
     }
-  }, [isReady, isMobile]);
+  }, [isReady]);
 
   // Calculate content opacity
   const getContentOpacity = (content: ScrollContent): number => {
@@ -114,29 +84,23 @@ export default function ScrollVideoSection({
   const desktopHeight = height;
   const sectionHeight = isMobile ? mobileHeight : desktopHeight;
 
+  // Mobile-optimized settings: higher frameThreshold = less frequent updates = better performance
+  const frameThreshold = isMobile ? 0.5 : 0.1; // Mobile updates less frequently
+  const transitionSpeed = isMobile ? 1.5 : 1; // Slightly slower on mobile for smoother performance
+
   return (
     <div ref={sectionRef} className={`relative ${sectionHeight}`} data-scroll-section>
-      {/* Video Component - Only load on desktop */}
-      {!isMobile && (
-        <ScrollyVideo
-          src={videoSrc}
-          transitionSpeed={1}
-          frameThreshold={0.1}
-          cover={true}
-          sticky={true}
-          full={true}
-          trackScroll={true}
-          onChange={handleScrollUpdate}
-        />
-      )}
-
-      {/* Mobile: Use poster image as background */}
-      {isMobile && posterSrc && (
-        <div 
-          className="fixed inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${posterSrc})` }}
-        />
-      )}
+      {/* Video Component - Optimized for both desktop and mobile */}
+      <ScrollyVideo
+        src={videoSrc}
+        transitionSpeed={transitionSpeed}
+        frameThreshold={frameThreshold}
+        cover={true}
+        sticky={true}
+        full={true}
+        trackScroll={true}
+        onChange={handleScrollUpdate}
+      />
 
       {/* Content Overlays */}
       <div className="fixed inset-0 pointer-events-none z-10">
@@ -187,8 +151,8 @@ export default function ScrollVideoSection({
         </div>
       </div>
 
-      {/* Loading state with poster image - Only show on desktop */}
-      {!isReady && !isMobile && posterSrc && (
+      {/* Loading state with poster image */}
+      {!isReady && posterSrc && (
         <div 
           className="fixed inset-0 flex items-center justify-center z-50 bg-cover bg-center"
           style={{ backgroundImage: `url(${posterSrc})` }}
@@ -201,8 +165,8 @@ export default function ScrollVideoSection({
         </div>
       )}
       
-      {/* Fallback loading (no poster) - Only show on desktop */}
-      {!isReady && !isMobile && !posterSrc && (
+      {/* Fallback loading (no poster) */}
+      {!isReady && !posterSrc && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
           <div className="text-center space-y-4">
             <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
