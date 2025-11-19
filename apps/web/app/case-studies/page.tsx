@@ -239,28 +239,32 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative px-8 py-24">
+      <section className="relative px-8 py-24 bg-zinc-950">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6 bg-gradient-to-br from-blue-500/10 to-zinc-900/50 border border-blue-500/20 rounded-2xl p-12"
+            className="text-center space-y-6 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-12 md:p-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
               Ready to Transform Your Operations?
             </h2>
-            <p className="text-xl text-zinc-400">
+            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">
               Let's discuss how B Automations can deliver similar results for your organization
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <button className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full transition-all">
-                Schedule Consultation
-              </button>
-              <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/30 transition-all">
-                View All Solutions
-              </button>
+              <a href="/consultation">
+                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all">
+                  Schedule Consultation
+                </button>
+              </a>
+              <a href="/how-it-works">
+                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all">
+                  View All Solutions
+                </button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -269,12 +273,12 @@ export default function CaseStudiesPage() {
       {/* Footer */}
       <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
               <p className="text-zinc-400 text-sm">
-                Enterprise automation partner specializing in AI-driven process optimization and intelligent infrastructure deployment.
+                Enterprise automation solutions powered by AI
               </p>
             </div>
 
@@ -282,32 +286,17 @@ export default function CaseStudiesPage() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
-                <li><a href="/about" className="hover:text-white cursor-pointer transition">About Us</a></li>
-                <li className="hover:text-white cursor-pointer transition">Our Team</li>
-                <li className="hover:text-white cursor-pointer transition">Careers</li>
-                <li className="hover:text-white cursor-pointer transition">Blog</li>
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div className="space-y-4">
-              <h4 className="font-semibold text-white">Solutions</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li className="hover:text-white cursor-pointer transition">Enterprise AI Integration</li>
-                <li className="hover:text-white cursor-pointer transition">Process Automation</li>
-                <li className="hover:text-white cursor-pointer transition">Predictive Analytics</li>
-                <li className="hover:text-white cursor-pointer transition">Strategic Advisory</li>
+                <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
+                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
               </ul>
             </div>
 
             {/* Contact */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">Enterprise Inquiries</h4>
+              <h4 className="font-semibold text-white">Contact</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
-                <li>contact@bautomations.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li className="hover:text-white cursor-pointer transition">Request Consultation</li>
-                <li className="hover:text-white cursor-pointer transition">Technical Support</li>
+                <li>dbalogh@udel.edu</li>
+                <li>(717) 891-9419</li>
               </ul>
             </div>
           </div>
@@ -315,12 +304,11 @@ export default function CaseStudiesPage() {
           {/* Bottom Bar */}
           <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-zinc-500 text-sm">
-              © 2025 B Automations. All rights reserved.
+              © 2025 B Automations
             </p>
             <div className="flex gap-6 text-sm text-zinc-500">
-              <span className="hover:text-white cursor-pointer transition">Privacy Policy</span>
-              <span className="hover:text-white cursor-pointer transition">Terms of Service</span>
-              <span className="hover:text-white cursor-pointer transition">Cookie Policy</span>
+              <a href="/privacy" className="hover:text-white cursor-pointer transition">Privacy</a>
+              <a href="/terms" className="hover:text-white cursor-pointer transition">Terms</a>
             </div>
           </div>
         </div>

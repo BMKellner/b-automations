@@ -1,296 +1,221 @@
 'use client';
 
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 export default function ConsultationPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+      } else {
+        const data = await response.json();
+        
+        // If it's a server configuration error, fall back to mailto
+        if (response.status === 500) {
+          console.warn('Email service not configured, using mailto fallback');
+          const subject = encodeURIComponent(`Consultation Request from ${formData.name}`);
+          const body = encodeURIComponent(
+            `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\n\nMessage:\n${formData.message}`
+          );
+          window.location.href = `mailto:dbalogh@udel.edu?subject=${subject}&body=${body}`;
+          setSubmitStatus('success');
+          setFormData({ name: '', email: '', company: '', message: '' });
+        } else {
+          setSubmitStatus('error');
+          setErrorMessage(data.error || 'Failed to send message. Please try again.');
+        }
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Fall back to mailto on network error
+      const subject = encodeURIComponent(`Consultation Request from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\n\nMessage:\n${formData.message}`
+      );
+      window.location.href = `mailto:dbalogh@udel.edu?subject=${subject}&body=${body}`;
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
-      {/* Navigation Bar */}
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center px-8 pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15),transparent_70%)] blur-3xl" />
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 text-center space-y-6 max-w-4xl"
-        >
+      <section className="relative min-h-[40vh] flex items-center justify-center px-8 pt-32 pb-16">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.6 }}
           >
-            <Badge className="mb-4 text-sm px-4 py-1" variant="secondary">
-              Start Your Automation Journey
-            </Badge>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white"
-          >
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
             Book Your <span className="text-blue-400">Consultation</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto leading-relaxed"
-          >
-            Let's explore how custom automation solutions can transform your business operations and drive measurable growth
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* What to Expect Section */}
-      <section className="relative px-8 py-24">
-        <div className="max-w-6xl mx-auto space-y-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              What to Expect
-            </h2>
-            <p className="text-lg text-zinc-400 max-w-3xl mx-auto">
-              Our consultation is a comprehensive discovery session designed to understand your unique challenges and identify automation opportunities
+            </h1>
+            <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto">
+              Let's discuss how B Automations can transform your operations
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Discovery Call',
-                duration: '45-60 minutes',
-                description: 'Deep dive into your current processes, pain points, and business objectives'
-              },
-              {
-                title: 'Solution Exploration',
-                duration: 'Real-time',
-                description: 'Discuss potential automation strategies tailored to your specific needs'
-              },
-              {
-                title: 'Roadmap Preview',
-                duration: 'Actionable',
-                description: 'Receive initial insights on implementation approach, timeline, and expected ROI'
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: idx * 0.15,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-              >
-                <Card className="bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 hover:border-blue-500/30 transition-all h-full">
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-white text-xl mb-2">{item.title}</CardTitle>
-                    <Badge variant="outline" className="text-blue-400 border-blue-500/30 w-fit mx-auto">
-                      {item.duration}
-                    </Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-zinc-400 text-center">
-                      {item.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* What We'll Discuss Section */}
-      <section className="relative px-8 py-24 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div className="max-w-5xl mx-auto space-y-12">
+      {/* Contact Form Section */}
+      <section className="relative px-8 py-12 pb-24">
+        <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-8 md:p-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              What We'll Discuss
-            </h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name Field */}
+              <div className="space-y-2">
+                <label htmlFor="name" className="block text-sm font-medium text-zinc-300">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                  placeholder="Your full name"
+                />
+              </div>
+
+              {/* Email Field */}
+              <div className="space-y-2">
+                <label htmlFor="email" className="block text-sm font-medium text-zinc-300">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                  placeholder="your.email@company.com"
+                />
+              </div>
+
+              {/* Company Field */}
+              <div className="space-y-2">
+                <label htmlFor="company" className="block text-sm font-medium text-zinc-300">
+                  Company
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+                  placeholder="Your company name"
+                />
+              </div>
+
+              {/* Message Field */}
+              <div className="space-y-2">
+                <label htmlFor="message" className="block text-sm font-medium text-zinc-300">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors resize-none"
+                  placeholder="Tell us about your automation needs and goals..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <p className="text-sm text-green-400 text-center">
+                  ✓ Message sent successfully! We'll get back to you within 24 hours.
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="text-sm text-red-400 text-center">
+                  ✗ {errorMessage}
+                </p>
+              )}
+              {submitStatus === 'idle' && (
+                <p className="text-sm text-zinc-500 text-center">
+                  We typically respond within 24 hours
+                </p>
+              )}
+            </form>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              'Your current business processes and workflows',
-              'Specific challenges and bottlenecks you\'re experiencing',
-              'Manual tasks consuming valuable time and resources',
-              'Data management and integration requirements',
-              'Scalability goals and future growth plans',
-              'Budget considerations and ROI expectations',
-              'Timeline requirements and implementation priorities',
-              'Team structure and stakeholder involvement'
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: idx * 0.05,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="flex items-start space-x-3 bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 hover:border-blue-500/30 transition-all"
-              >
-                <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                <p className="text-zinc-300">{item}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Book Section */}
-      <section className="relative px-8 py-24">
-        <div className="max-w-6xl mx-auto space-y-12">
+          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-12 text-center space-y-4"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              Why Book a Consultation?
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: 'Zero Commitment',
-                description: 'Free consultation with no obligation or pressure to proceed'
-              },
-              {
-                title: 'Expert Insights',
-                description: 'Gain valuable automation expertise regardless of next steps'
-              },
-              {
-                title: 'Clear Understanding',
-                description: 'Leave with clarity on what\'s possible for your business'
-              },
-              {
-                title: 'Custom Approach',
-                description: 'Discussion tailored to your industry and specific challenges'
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: idx * 0.1,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="text-center space-y-3"
-              >
-                <div className="text-4xl font-bold text-blue-400">{idx + 1}</div>
-                <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                <p className="text-zinc-400 text-sm">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Information Section */}
-      <section className="relative px-8 py-24 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Card className="bg-gradient-to-br from-blue-500/10 to-zinc-900/50 border-blue-500/20">
-              <CardHeader className="text-center space-y-4">
-                <CardTitle className="text-4xl md:text-5xl font-bold text-white">
-                  Ready to Get Started?
-                </CardTitle>
-                <CardDescription className="text-xl text-zinc-400">
-                  Reach out to schedule your free consultation
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="space-y-8">
-                {/* Contact Methods */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="text-center space-y-2 p-6 bg-zinc-900/50 rounded-lg border border-zinc-800">
-                    <h3 className="text-white font-semibold">Email Us</h3>
-                    <a href="mailto:contact@bautomations.com" className="text-blue-400 hover:text-blue-300 transition-colors">
-                      contact@bautomations.com
-                    </a>
-                  </div>
-                  
-                  <div className="text-center space-y-2 p-6 bg-zinc-900/50 rounded-lg border border-zinc-800">
-                    <h3 className="text-white font-semibold">Call Us</h3>
-                    <a href="tel:+15551234567" className="text-blue-400 hover:text-blue-300 transition-colors">
-                      +1 (555) 123-4567
-                    </a>
-                  </div>
+            <p className="text-zinc-400">Or reach us directly at:</p>
+            <div className="space-y-2">
+              <p className="text-white text-lg">
+                <a href="mailto:dbalogh@udel.edu" className="hover:text-blue-400 transition-colors">
+                  dbalogh@udel.edu
+                </a>
+              </p>
+              <p className="text-zinc-400">(717) 891-9419</p>
                 </div>
-
-                {/* Next Steps */}
-                <div className="bg-zinc-900/30 border border-zinc-800 rounded-lg p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-white text-center">Next Steps</h3>
-                  <div className="space-y-3">
-                    {[
-                      'Contact us via email or phone to schedule your consultation',
-                      'We\'ll send you a calendar invite with video conference details',
-                      'Prepare any questions or documentation about your current processes',
-                      'Join the call at the scheduled time - we\'re excited to meet you!'
-                    ].map((step, idx) => (
-                      <div key={idx} className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-sm font-bold">
-                          {idx + 1}
-                        </div>
-                        <p className="text-zinc-300 text-sm pt-0.5">{step}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                  <a href="mailto:contact@bautomations.com">
-                    <Button size="lg" className="text-lg px-8 py-6 w-full sm:w-auto">
-                      Email Us Now
-                    </Button>
-                  </a>
-                  <a href="/case-studies">
-                    <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto">
-                      View Case Studies
-                    </Button>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
           </motion.div>
         </div>
       </section>
@@ -298,12 +223,12 @@ export default function ConsultationPage() {
       {/* Footer */}
       <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
               <p className="text-zinc-400 text-sm">
-                Enterprise automation partner specializing in AI-driven process optimization and intelligent infrastructure deployment.
+                Enterprise automation solutions powered by AI
               </p>
             </div>
 
@@ -311,32 +236,17 @@ export default function ConsultationPage() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
-                <li><a href="/about" className="hover:text-white cursor-pointer transition">About Us</a></li>
-                <li className="hover:text-white cursor-pointer transition">Our Team</li>
-                <li className="hover:text-white cursor-pointer transition">Careers</li>
-                <li className="hover:text-white cursor-pointer transition">Blog</li>
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div className="space-y-4">
-              <h4 className="font-semibold text-white">Solutions</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li className="hover:text-white cursor-pointer transition">Enterprise AI Integration</li>
-                <li className="hover:text-white cursor-pointer transition">Process Automation</li>
-                <li className="hover:text-white cursor-pointer transition">Predictive Analytics</li>
-                <li className="hover:text-white cursor-pointer transition">Strategic Advisory</li>
+                <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
+                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
               </ul>
             </div>
 
             {/* Contact */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">Enterprise Inquiries</h4>
+              <h4 className="font-semibold text-white">Contact</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
-                <li>contact@bautomations.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li><a href="/consultation" className="hover:text-white cursor-pointer transition">Request Consultation</a></li>
-                <li className="hover:text-white cursor-pointer transition">Technical Support</li>
+                <li>dbalogh@udel.edu</li>
+                <li>(717) 891-9419</li>
               </ul>
             </div>
           </div>
@@ -344,12 +254,11 @@ export default function ConsultationPage() {
           {/* Bottom Bar */}
           <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-zinc-500 text-sm">
-              © 2025 B Automations. All rights reserved.
+              © 2025 B Automations
             </p>
             <div className="flex gap-6 text-sm text-zinc-500">
-              <span className="hover:text-white cursor-pointer transition">Privacy Policy</span>
-              <span className="hover:text-white cursor-pointer transition">Terms of Service</span>
-              <span className="hover:text-white cursor-pointer transition">Cookie Policy</span>
+              <a href="/privacy" className="hover:text-white cursor-pointer transition">Privacy</a>
+              <a href="/terms" className="hover:text-white cursor-pointer transition">Terms</a>
             </div>
           </div>
         </div>
@@ -357,4 +266,3 @@ export default function ConsultationPage() {
     </div>
   );
 }
-

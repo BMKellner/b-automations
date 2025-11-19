@@ -206,12 +206,12 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
               <p className="text-zinc-400 text-sm">
-                Enterprise automation partner specializing in AI-driven process optimization and intelligent infrastructure deployment.
+                Enterprise automation solutions powered by AI
               </p>
             </div>
 
@@ -219,32 +219,17 @@ export default function AboutPage() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
-                <li><a href="/about" className="hover:text-white cursor-pointer transition">About Us</a></li>
-                <li className="hover:text-white cursor-pointer transition">Our Team</li>
-                <li className="hover:text-white cursor-pointer transition">Careers</li>
-                <li className="hover:text-white cursor-pointer transition">Blog</li>
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div className="space-y-4">
-              <h4 className="font-semibold text-white">Solutions</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li className="hover:text-white cursor-pointer transition">Enterprise AI Integration</li>
-                <li className="hover:text-white cursor-pointer transition">Process Automation</li>
-                <li className="hover:text-white cursor-pointer transition">Predictive Analytics</li>
-                <li className="hover:text-white cursor-pointer transition">Strategic Advisory</li>
+                <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
+                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
               </ul>
             </div>
 
             {/* Contact */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">Enterprise Inquiries</h4>
+              <h4 className="font-semibold text-white">Contact</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
-                <li>contact@bautomations.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li className="hover:text-white cursor-pointer transition">Request Consultation</li>
-                <li className="hover:text-white cursor-pointer transition">Technical Support</li>
+                <li>dbalogh@udel.edu</li>
+                <li>(717) 891-9419</li>
               </ul>
             </div>
           </div>
@@ -252,12 +237,11 @@ export default function AboutPage() {
           {/* Bottom Bar */}
           <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-zinc-500 text-sm">
-              © 2025 B Automations. All rights reserved.
+              © 2025 B Automations
             </p>
             <div className="flex gap-6 text-sm text-zinc-500">
-              <span className="hover:text-white cursor-pointer transition">Privacy Policy</span>
-              <span className="hover:text-white cursor-pointer transition">Terms of Service</span>
-              <span className="hover:text-white cursor-pointer transition">Cookie Policy</span>
+              <a href="/privacy" className="hover:text-white cursor-pointer transition">Privacy</a>
+              <a href="/terms" className="hover:text-white cursor-pointer transition">Terms</a>
             </div>
           </div>
         </div>
@@ -265,4 +249,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
 
