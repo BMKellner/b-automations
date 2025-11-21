@@ -41,19 +41,12 @@ export default function Home() {
             startProgress: 0.4,
             endProgress: 0.6,
             badge: "Client Excellence",
-            title: "98.7% Satisfaction Rate",
-            description: "Validated across 500+ enterprise deployments spanning Fortune 500 and high-growth technology sectors"
+            title: "100% Satisfaction Rate",
+            description: ""
           },
           {
             startProgress: 0.6,
-            endProgress: 0.8,
-            badge: "Measurable Impact",
-            title: "2.5M+ Annual Hours Reclaimed",
-            description: "350+ production-grade implementations delivering 4.8x average ROI through precision automation engineering"
-          },
-          {
-            startProgress: 0.8,
-            endProgress: 1,
+            endProgress: .8,
             badge: "Strategic Partnership",
             title: "Elevate Your Operational Capacity",
             description: "Join industry leaders leveraging B Automations' proven methodology for transformative business outcomes"

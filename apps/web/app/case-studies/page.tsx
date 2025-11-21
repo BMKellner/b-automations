@@ -9,46 +9,26 @@ export default function CaseStudiesPage() {
   const caseStudies = [
     {
       id: 1,
-      title: 'Automated LinkedIn Technology Showcase',
-      client: 'University of Delaware Tech Transfer Office',
-      industry: 'Higher Education & Technology Transfer',
-      challenge: 'The University of Delaware Tech Transfer Office needed to increase visibility of emerging technologies and innovations available for licensing. Manual posting to LinkedIn was time-consuming, inconsistent, and failed to reach optimal posting times for maximum engagement.',
-      solution: 'Developed an intelligent LinkedIn automation system that automatically monitors new technology disclosures from the university\'s innovation pipeline. The system generates compelling, professional posts with relevant hashtags, images, and descriptions tailored to different audience segments (investors, industry partners, researchers). Posts are scheduled at optimal times based on engagement analytics.',
-      technologies: ['LinkedIn API', 'Natural Language Processing', 'Computer Vision', 'Scheduling Algorithms', 'Database Integration'],
-      results: [
-        '285% increase in LinkedIn engagement',
-        '47 new licensing inquiries per quarter',
-        '12 hours saved weekly on social media management',
-        '3.2x growth in tech transfer profile followers'
-      ],
-      metrics: {
-        efficiency: '95% reduction in manual posting time',
-        roi: '4.3x return on investment within 6 months',
-        engagement: '285% increase in post engagement'
-      }
-    },
-    {
-      id: 2,
-      title: 'Companies House Intelligence Platform',
-      client: 'UK Investment Firm',
+      title: 'Automated Investment Data Aggregation and Analysis',
+      client: 'Private Investors and VC Firms',
       industry: 'Financial Services & Investment',
-      challenge: 'An investment firm needed real-time access to comprehensive UK company data from Companies House for due diligence, competitive analysis, and investment opportunity identification. Manual data retrieval from the Companies House website was inefficient, error-prone, and couldn\'t scale to analyze thousands of companies.',
-      solution: 'Engineered a sophisticated web scraping and data aggregation platform that continuously monitors Companies House records. The system extracts company financials, director information, filing history, shareholder structures, and legal proceedings. Data is normalized, enriched with additional public sources, and delivered through a searchable dashboard with real-time alerts for significant changes (directorship changes, financial filings, insolvency notices).',
-      technologies: ['Web Scraping (BeautifulSoup, Scrapy)', 'Companies House API', 'PostgreSQL', 'Redis Cache', 'ETL Pipelines', 'React Dashboard'],
+      challenge: 'An investment firm needed real-time access to comprehensive UK company data from Companies House for due diligence, competitive analysis, and investment opportunity identification. Manual data retrieval from the Companies House website is inefficient, error-prone, and can\'t scale to analyze thousands of companies.',
+      solution: 'Engineered a web scraping and data aggregation tool that continuously monitors Companies House records. The system extracts company financials, director information, filing history, shareholder structures, and legal proceedings. Data is normalized, enriched with additional public sources, and delivered through a searchable dashboard with real-time alerts for significant changes (directorship changes, financial filings, insolvency notices).',
+      technologies: ['Web Scraping', 'Companies House API', 'PostgreSQL', 'React Dashboard'],
       results: [
         'Automated monitoring of 50,000+ UK companies',
-        '15 minutes average time for complete due diligence (down from 4 hours)',
+        'User-friendly, well presented data dashboard for the investors',
         '99.7% data accuracy rate',
-        'Early identification of 23 high-value investment opportunities'
+        'Early identification of 4 high-value investment opportunities'
       ],
       metrics: {
-        efficiency: '93% reduction in due diligence time',
-        roi: '6.8x return on investment in first year',
+        invested: '$2M+ invested using the tool',
+        roi: '4x return on investment in first year',
         coverage: '50,000+ companies monitored continuously'
       }
     },
     {
-      id: 3,
+      id: 2,
       title: 'Intelligent Marketing Campaign Automation',
       client: 'University Tech Transfer Office',
       industry: 'Higher Education & Innovation Marketing',
@@ -56,17 +36,30 @@ export default function CaseStudiesPage() {
       solution: 'Built an AI-powered marketing automation platform that analyzes each new technology disclosure and automatically generates multi-channel marketing campaigns. The system uses natural language processing to understand the innovation\'s technical details and market potential, then creates targeted campaigns including email sequences, social media content, industry-specific landing pages, and personalized outreach to relevant contacts in the CRM. Machine learning algorithms continuously optimize messaging and targeting based on engagement data.',
       technologies: ['Marketing Automation (HubSpot API)', 'GPT-4 for Content Generation', 'Machine Learning', 'CRM Integration', 'Email Marketing', 'Analytics Dashboard'],
       results: [
-        '218% increase in qualified licensing leads',
-        '34 successful technology licenses facilitated',
-        '8 strategic industry partnerships established',
-        '$4.2M in licensing revenue generated'
+        'over 300% increase in response inquiries',
+        '30 minutes saved per marketting campaign',
+        'Automated outreach to 1000+ industry partners'
       ],
       metrics: {
-        efficiency: '87% reduction in campaign creation time',
-        roi: '12.5x return on investment',
-        conversion: '218% increase in qualified leads'
+        efficiency: '95% reduction in campaign creation time',
+        conversion: '300% increase in qualified leads'
       }
-    }
+    },
+    {
+      id: 3,
+      title: 'Automated Social Media Content Creation',
+      client: 'University of Delaware Tech Transfer Office',
+      industry: 'Technology Transfer',
+      challenge: 'The University of Delaware Tech Transfer Office needed to increase visibility of emerging technologies and innovations available for licensing. Manual post generation to LinkedIn was time-consuming, inconsistent, and failed to reach optimal posting times for maximum engagement.',
+      solution: 'Developed an intelligent LinkedIn automation system that automatically monitors new technology disclosures from the university\'s innovation pipeline. The system generates compelling, professional posts with relevant hashtags, images, and descriptions tailored to different audience segments (investors, industry partners, researchers). Posts are scheduled at optimal times based on engagement analytics.',
+      technologies: ['LinkedIn API', 'Natural Language Processing', 'Computer Vision', 'Scheduling Algorithms', 'Database Integration'],
+      results: [
+        '2 hours saved weekly on social media management',
+      ],
+      metrics: {
+        efficiency: '99% reduction in manual posting time',
+      }
+    },
   ];
 
   return (
@@ -107,7 +100,7 @@ export default function CaseStudiesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-base sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto px-4"
+            className="text-base sm:text-xl md:text-2xl text-zinc-100 max-w-3xl mx-auto px-4"
           >
             Real-world automation solutions delivering measurable business impact across diverse industries
           </motion.p>
@@ -135,14 +128,11 @@ export default function CaseStudiesPage() {
                     <Badge variant="secondary" className="text-xs">
                       {study.industry}
                     </Badge>
-                    <Badge className="text-xs bg-blue-500/10 text-blue-400 border-blue-500/20">
-                      Case Study #{study.id}
-                    </Badge>
                   </div>
                   <CardTitle className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                     {study.title}
                   </CardTitle>
-                  <CardDescription className="text-zinc-400 text-sm sm:text-base lg:text-lg">
+                  <CardDescription className="text-zinc-100 text-sm sm:text-base lg:text-lg">
                     {study.client}
                   </CardDescription>
                 </CardHeader>
@@ -153,7 +143,7 @@ export default function CaseStudiesPage() {
                     <h3 className="text-lg sm:text-xl font-semibold text-blue-400">
                       The Challenge
                     </h3>
-                    <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    <p className="text-zinc-100 leading-relaxed text-sm sm:text-base">
                       {study.challenge}
                     </p>
                   </div>
@@ -163,7 +153,7 @@ export default function CaseStudiesPage() {
                     <h3 className="text-lg sm:text-xl font-semibold text-blue-400">
                       Our Solution
                     </h3>
-                    <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    <p className="text-zinc-100 leading-relaxed text-sm sm:text-base">
                       {study.solution}
                     </p>
                   </div>
@@ -178,7 +168,7 @@ export default function CaseStudiesPage() {
                         <Badge 
                           key={techIdx}
                           variant="outline" 
-                          className="text-zinc-300 border-zinc-700 bg-zinc-800/50 text-xs"
+                          className="text-zinc-100 border-zinc-700 bg-zinc-800/50 text-xs"
                         >
                           {tech}
                         </Badge>
@@ -198,39 +188,67 @@ export default function CaseStudiesPage() {
                           className="flex items-start space-x-2 bg-zinc-800/30 p-2 sm:p-3 rounded-lg border border-zinc-800"
                         >
                           <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                          <p className="text-zinc-300 text-xs sm:text-sm">{result}</p>
+                          <p className="text-zinc-100 text-xs sm:text-sm">{result}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Key Metrics */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-4 border-t border-zinc-800">
-                    <div className="text-center space-y-1 sm:space-y-2">
-                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
-                        {study.metrics.efficiency}
-                      </div>
-                      <div className="text-xs sm:text-sm text-zinc-400">
-                        Efficiency Gain
-                      </div>
+                  {Object.keys(study.metrics).length > 0 && (
+                    <div className={`grid grid-cols-1 ${Object.keys(study.metrics).length === 1 ? 'sm:grid-cols-1' : Object.keys(study.metrics).length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3'} gap-4 sm:gap-6 pt-4 border-t border-zinc-800`}>
+                      {study.metrics.invested && (
+                        <div className="text-center space-y-1 sm:space-y-2">
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
+                            {study.metrics.invested}
+                          </div>
+                          <div className="text-xs sm:text-sm text-zinc-100">
+                            Investment
+                          </div>
+                        </div>
+                      )}
+                      {study.metrics.roi && (
+                        <div className="text-center space-y-1 sm:space-y-2">
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
+                            {study.metrics.roi}
+                          </div>
+                          <div className="text-xs sm:text-sm text-zinc-100">
+                            Return on Investment
+                          </div>
+                        </div>
+                      )}
+                      {study.metrics.efficiency && (
+                        <div className="text-center space-y-1 sm:space-y-2">
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
+                            {study.metrics.efficiency}
+                          </div>
+                          <div className="text-xs sm:text-sm text-zinc-100">
+                            Efficiency Gain
+                          </div>
+                        </div>
+                      )}
+                      {study.metrics.conversion && (
+                        <div className="text-center space-y-1 sm:space-y-2">
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
+                            {study.metrics.conversion}
+                          </div>
+                          <div className="text-xs sm:text-sm text-zinc-100">
+                            Lead Growth
+                          </div>
+                        </div>
+                      )}
+                      {study.metrics.coverage && (
+                        <div className="text-center space-y-1 sm:space-y-2">
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
+                            {study.metrics.coverage}
+                          </div>
+                          <div className="text-xs sm:text-sm text-zinc-100">
+                            Coverage
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <div className="text-center space-y-1 sm:space-y-2">
-                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
-                        {study.metrics.roi}
-                      </div>
-                      <div className="text-xs sm:text-sm text-zinc-400">
-                        Return on Investment
-                      </div>
-                    </div>
-                    <div className="text-center space-y-1 sm:space-y-2">
-                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
-                        {study.metrics.engagement || study.metrics.conversion || study.metrics.coverage}
-                      </div>
-                      <div className="text-xs sm:text-sm text-zinc-400">
-                        {study.metrics.engagement ? 'Engagement Boost' : study.metrics.conversion ? 'Lead Growth' : 'Coverage'}
-                      </div>
-                    </div>
-                  </div>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>
@@ -244,16 +262,16 @@ export default function CaseStudiesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
-              <p className="text-zinc-400 text-sm">
+              <h3 className="text-xl font-semibold text-white">B Automations</h3>
+              <p className="text-zinc-100 text-sm">
                 Enterprise automation solutions powered by AI
               </p>
             </div>
 
             {/* Quick Links */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">Company</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <h4 className="text-xl font-semibold text-white">Company</h4>
+              <ul className="space-y-2 text-sm text-zinc-100">
                 <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
                 <li className="hover:text-white cursor-pointer transition">Case Studies</li>
               </ul>
@@ -261,8 +279,8 @@ export default function CaseStudiesPage() {
 
             {/* Contact */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">Contact</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <h4 className="text-xl font-semibold text-white">Contact</h4>
+              <ul className="space-y-2 text-sm text-zinc-100">
                 <li>dbalogh@udel.edu</li>
                 <li>(717) 891-9419</li>
               </ul>

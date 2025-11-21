@@ -171,13 +171,12 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 pt-8 sm:pt-12 px-4"
+            className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-8 sm:pt-12 px-4"
           >
             {[
-              { stat: '500+', label: 'Enterprise Deployments' },
-              { stat: '98.7%', label: 'Client Satisfaction' },
-              { stat: '2.5M+', label: 'Hours Saved Annually' },
-              { stat: '4.8x', label: 'Average ROI' }
+              { stat: '5', label: 'Enterprise Deployments' },
+              { stat: '100%', label: 'Client Satisfaction' },
+              { stat: '$2M+', label: 'Value Delivered' },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
