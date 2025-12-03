@@ -24,7 +24,7 @@ export default function Home() {
             badge: "Enterprise Automation Solutions",
             title: (
               <>
-                <span className="text-blue-400">B Automations</span>
+                <span className="text-blue-400">B Automation</span>
               </>
             ),
             description: "Engineering intelligent systems that drive operational excellence and exponential growth",
