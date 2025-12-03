@@ -53,7 +53,7 @@ export default function AboutPage() {
             className="space-y-4 sm:space-y-6"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-12 px-4">
-              Our Mission
+              Our Mission3
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-zinc-400 text-center max-w-4xl mx-auto leading-relaxed px-4">
               At B Automations, we believe that intelligent automation is the key to unlocking unprecedented 
