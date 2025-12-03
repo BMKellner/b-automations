@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 
-export default function CaseStudiesPage() {
-  const caseStudies = [
+export default function SolutionsPage() {
+  const solutions = [
     {
       id: 1,
       title: 'Automated Investment Data Aggregation and Analysis',
@@ -94,7 +94,7 @@ export default function CaseStudiesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-5xl md:text-7xl font-bold text-white px-4"
           >
-            Case <span className="text-blue-400">Studies</span>
+            <span className="text-blue-400">Solutions</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -107,10 +107,10 @@ export default function CaseStudiesPage() {
         </motion.div>
       </section>
 
-      {/* Case Studies Section */}
+      {/* Solutions Section */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20 lg:space-y-24">
-          {caseStudies.map((study, idx) => (
+          {solutions.map((study, idx) => (
             <motion.div
               key={study.id}
               initial={{ opacity: 0, y: 50 }}
@@ -273,7 +273,7 @@ export default function CaseStudiesPage() {
               <h4 className="text-xl font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-100">
                 <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
-                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
+                <li><a href="/solutions" className="hover:text-white cursor-pointer transition">Solutions</a></li>
               </ul>
             </div>
 
