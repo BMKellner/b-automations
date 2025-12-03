@@ -219,7 +219,7 @@ export default function AboutPage() {
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
-                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
+                <li><a href="/solutions" className="hover:text-white cursor-pointer transition">Solutions</a></li>
               </ul>
             </div>
 

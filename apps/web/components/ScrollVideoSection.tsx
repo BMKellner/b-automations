@@ -25,7 +25,7 @@ interface ScrollVideoSectionProps {
 /**
  * Professional scroll-driven video using scrolly-video library
  * Updates continuously during scroll (not after)
- * Optimized for mobile: uses reduced intensity settings for better performance
+ * Fully responsive: adapts to all screen sizes dynamically
  */
 export default function ScrollVideoSection({
   videoSrc,
@@ -35,26 +35,53 @@ export default function ScrollVideoSection({
 }: ScrollVideoSectionProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isReady, setIsReady] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [viewportSize, setViewportSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoReadyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Detect mobile device
+  // Responsive viewport detection - handles all screen sizes
   useEffect(() => {
-    const checkMobile = () => {
-      const isMobileDevice = window.innerWidth < 768 || 
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobile(isMobileDevice);
+    const checkViewport = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setViewportSize('mobile');
+      } else if (width < 1024) {
+        setViewportSize('tablet');
+      } else {
+        setViewportSize('desktop');
+      }
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
   }, []);
+
+  // Fallback: Set ready after a short delay if onChange hasn't fired
+  useEffect(() => {
+    if (!isReady) {
+      // Set a shorter timeout as fallback - video should initialize quickly
+      videoReadyTimeoutRef.current = setTimeout(() => {
+        setIsReady(true);
+      }, 500); // Wait 500ms for video to initialize
+
+      return () => {
+        if (videoReadyTimeoutRef.current) {
+          clearTimeout(videoReadyTimeoutRef.current);
+        }
+      };
+    }
+  }, [isReady]);
 
   const handleScrollUpdate = useCallback((progress: number) => {
     setScrollProgress(progress);
-    if (!isReady && progress >= 0) {
+    if (!isReady) {
       setIsReady(true);
+      // Clear the fallback timeout if onChange fires
+      if (videoReadyTimeoutRef.current) {
+        clearTimeout(videoReadyTimeoutRef.current);
+        videoReadyTimeoutRef.current = null;
+      }
     }
   }, [isReady]);
 
@@ -79,18 +106,44 @@ export default function ScrollVideoSection({
     return 0;
   };
 
-  // Use shorter height on mobile for better performance
-  const mobileHeight = 'h-[200vh]';
-  const desktopHeight = height;
-  const sectionHeight = isMobile ? mobileHeight : desktopHeight;
+  // Responsive height calculation - adapts to all screen sizes
+  const getResponsiveHeight = () => {
+    switch (viewportSize) {
+      case 'mobile':
+        return 'h-[200vh]';
+      case 'tablet':
+        return 'h-[300vh]';
+      case 'desktop':
+        return height;
+      default:
+        return height;
+    }
+  };
 
-  // Mobile-optimized settings: higher frameThreshold = less frequent updates = better performance
-  const frameThreshold = isMobile ? 0.5 : 0.1; // Mobile updates less frequently
-  const transitionSpeed = isMobile ? 1.5 : 1; // Slightly slower on mobile for smoother performance
+  // Responsive performance settings - optimized for each viewport
+  const getPerformanceSettings = () => {
+    switch (viewportSize) {
+      case 'mobile':
+        return { frameThreshold: 0.5, transitionSpeed: 1.5 };
+      case 'tablet':
+        return { frameThreshold: 0.3, transitionSpeed: 1.2 };
+      case 'desktop':
+        return { frameThreshold: 0.1, transitionSpeed: 1 };
+      default:
+        return { frameThreshold: 0.1, transitionSpeed: 1 };
+    }
+  };
+
+  const { frameThreshold, transitionSpeed } = getPerformanceSettings();
+  const sectionHeight = getResponsiveHeight();
 
   return (
-    <div ref={sectionRef} className={`relative ${sectionHeight}`} data-scroll-section>
-      {/* Video Component - Optimized for both desktop and mobile */}
+    <div 
+      ref={sectionRef} 
+      className={`relative ${sectionHeight} w-full`}
+      data-scroll-section
+    >
+      {/* Video Component - Fully responsive */}
       <ScrollyVideo
         src={videoSrc}
         transitionSpeed={transitionSpeed}
@@ -102,42 +155,44 @@ export default function ScrollVideoSection({
         onChange={handleScrollUpdate}
       />
 
-      {/* Content Overlays */}
+      {/* Content Overlays - Responsive positioning */}
       <div className="fixed inset-0 pointer-events-none z-10">
-        <div className="relative h-screen w-full flex items-center justify-center">
+        <div className="relative h-full w-full flex items-center justify-center">
           {/* Dark overlay for better text contrast */}
           <div className="absolute inset-0 bg-black/30" />
 
           {/* Content transitions */}
-          <div className="relative z-10 h-full w-full flex items-center justify-center">
+          <div className="relative z-10 h-full w-full flex items-center justify-center px-4 sm:px-6 md:px-8">
             {contents.map((content, idx) => {
               const opacity = getContentOpacity(content);
 
               return (
                 <div
                   key={idx}
-                  className="absolute inset-0 flex items-center justify-center px-8"
+                  className="absolute inset-0 flex items-center justify-center"
                   style={{
                     opacity,
                     pointerEvents: opacity > 0.5 ? 'auto' : 'none',
                     transition: 'opacity 0.3s ease-out',
+                    width: '100%',
+                    height: '100%',
                   }}
                 >
-                  <div className="text-center max-w-3xl pointer-events-auto flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[500px] px-4">
-                    <div className="space-y-4 sm:space-y-6">
+                  <div className="text-center max-w-3xl pointer-events-auto flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-8">
+                    <div className="space-y-3 sm:space-y-4 md:space-y-6 w-full">
                       {content.badge && (
-                        <Badge className="mb-2 text-xs sm:text-sm px-3 sm:px-4 py-1" variant="secondary">
+                        <Badge className="mb-2 text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1" variant="secondary">
                           {content.badge}
                         </Badge>
                       )}
-                      <div className="min-h-[120px] sm:min-h-[200px] md:min-h-[250px] flex items-center justify-center">
-                        <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl leading-tight">
+                      <div className="flex items-center justify-center min-h-[80px] sm:min-h-[120px] md:min-h-[200px] lg:min-h-[250px]">
+                        <h2 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white drop-shadow-2xl leading-tight px-2 sm:px-4">
                           {content.title}
                         </h2>
                       </div>
                       {content.description && (
-                        <div className="min-h-[60px] sm:min-h-[100px] md:min-h-[120px] flex items-center justify-center">
-                          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-white/90 drop-shadow-xl px-2 sm:px-0">
+                        <div className="flex items-center justify-center min-h-[40px] sm:min-h-[60px] md:min-h-[100px] lg:min-h-[120px]">
+                          <p className="text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 drop-shadow-xl px-2 sm:px-4 max-w-4xl">
                             {content.description}
                           </p>
                         </div>
@@ -153,14 +208,11 @@ export default function ScrollVideoSection({
 
       {/* Loading state with poster image */}
       {!isReady && posterSrc && (
-        <div 
-          className="fixed inset-0 flex items-center justify-center z-50 bg-cover bg-center"
-          style={{ backgroundImage: `url(${posterSrc})` }}
-        >
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-cover bg-center" style={{ backgroundImage: `url(${posterSrc})` }}>
           <div className="absolute inset-0 bg-black/50" />
           <div className="relative text-center space-y-4">
             <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
-            <div className="text-white text-lg">Loading experience...</div>
+            <div className="text-white text-sm sm:text-base md:text-lg">Loading experience...</div>
           </div>
         </div>
       )}
@@ -170,7 +222,7 @@ export default function ScrollVideoSection({
         <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
           <div className="text-center space-y-4">
             <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
-            <div className="text-white text-lg">Loading experience...</div>
+            <div className="text-white text-sm sm:text-base md:text-lg">Loading experience...</div>
           </div>
         </div>
       )}

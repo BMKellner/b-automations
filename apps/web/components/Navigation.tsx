@@ -62,10 +62,10 @@ export default function Navigation() {
             </a>
 
             <a
-              href="/case-studies"
+              href="/solutions"
               className="text-sm font-medium text-zinc-300 hover:text-white transition-colors"
             >
-              Case Studies
+              Solutions
             </a>
           </div>
 
@@ -123,11 +123,11 @@ export default function Navigation() {
                   About
                 </a>
                 <a
-                  href="/case-studies"
+                  href="/solutions"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block text-base font-medium text-zinc-300 hover:text-white transition-colors py-2"
                 >
-                  Case Studies
+                  Solutions
                 </a>
                 <a
                   href="/consultation"

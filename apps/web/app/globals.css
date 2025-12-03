@@ -38,3 +38,26 @@ body {
 .pulse-cta {
   animation: subtle-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Ensure smooth scrolling on mobile */
+@supports (-webkit-overflow-scrolling: touch) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent video container issues on mobile */
+video {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  .fixed {
+    position: fixed;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}

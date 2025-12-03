@@ -141,9 +141,9 @@ export default function Home() {
                   Book a Consultation
                 </button>
               </Link>
-              <Link href="/case-studies" className="w-full sm:w-auto">
+              <Link href="/solutions" className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-base sm:text-lg">
-                  Explore Case Studies
+                  Explore Solutions
                 </button>
               </Link>
             </motion.div>
@@ -168,7 +168,7 @@ export default function Home() {
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
-                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
+                <li><a href="/solutions" className="hover:text-white cursor-pointer transition">Solutions</a></li>
               </ul>
             </div>
 
