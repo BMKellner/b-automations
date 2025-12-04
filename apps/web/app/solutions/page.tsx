@@ -5,8 +5,28 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 
+type CaseStudyMetrics = {
+  invested?: string;
+  roi?: string;
+  coverage?: string;
+  efficiency?: string;
+  conversion?: string;
+};
+
+type CaseStudy = {
+  id: number;
+  title: string;
+  client: string;
+  industry: string;
+  challenge: string;
+  solution: string;
+  technologies: string[];
+  results: string[];
+  metrics: CaseStudyMetrics;
+};
+
 export default function CaseStudiesPage() {
-  const caseStudies = [
+  const caseStudies: CaseStudy[] = [
     {
       id: 1,
       title: 'Automated Investment Data Aggregation and Analysis',
@@ -227,7 +247,7 @@ export default function CaseStudiesPage() {
                           </div>
                         </div>
                       )}
-                      {study.metrics.conversion && (
+                      {'conversion' in study.metrics && study.metrics.conversion && (
                         <div className="text-center space-y-1 sm:space-y-2">
                           <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-400">
                             {study.metrics.conversion}
