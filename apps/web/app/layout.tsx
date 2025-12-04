@@ -17,6 +17,14 @@ export const metadata: Metadata = {
   description: "Transform your operations with intelligent automation. We architect enterprise-grade automation infrastructure leveraging AI, machine learning, and advanced workflow orchestration.",
   keywords: ["automation", "AI", "enterprise automation", "business process automation", "workflow automation", "AI integration", "machine learning"],
   authors: [{ name: "B Automations" }],
+  icons: {
+    icon: [
+      { url: "/b-icon.svg", type: "image/svg+xml" },
+      { url: "/b-icon.svg", sizes: "32x32", type: "image/svg+xml" },
+    ],
+    shortcut: "/b-icon.svg",
+    apple: "/b-icon.svg",
+  },
   openGraph: {
     title: "B Automations - Enterprise AI Automation Solutions",
     description: "Engineering intelligent systems that drive operational excellence and exponential growth",

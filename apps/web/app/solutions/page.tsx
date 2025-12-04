@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 
-export default function SolutionsPage() {
-  const solutions = [
+export default function CaseStudiesPage() {
+  const caseStudies = [
     {
       id: 1,
       title: 'Automated Investment Data Aggregation and Analysis',
@@ -27,24 +27,24 @@ export default function SolutionsPage() {
         coverage: '50,000+ companies monitored continuously'
       }
     },
-    {
-      id: 2,
-      title: 'Intelligent Marketing Campaign Automation',
-      client: 'University Tech Transfer Office',
-      industry: 'Higher Education & Innovation Marketing',
-      challenge: 'The tech transfer office struggled to effectively market diverse university innovations to appropriate industry partners, investors, and potential licensees. Each technology required customized outreach campaigns, but manual segmentation and personalized messaging was overwhelming the small marketing team. Response rates were low and many promising technologies received insufficient market exposure.',
-      solution: 'Built an AI-powered marketing automation platform that analyzes each new technology disclosure and automatically generates multi-channel marketing campaigns. The system uses natural language processing to understand the innovation\'s technical details and market potential, then creates targeted campaigns including email sequences, social media content, industry-specific landing pages, and personalized outreach to relevant contacts in the CRM. Machine learning algorithms continuously optimize messaging and targeting based on engagement data.',
-      technologies: ['Marketing Automation (HubSpot API)', 'GPT-4 for Content Generation', 'Machine Learning', 'CRM Integration', 'Email Marketing', 'Analytics Dashboard'],
-      results: [
-        'over 300% increase in response inquiries',
-        '30 minutes saved per marketting campaign',
-        'Automated outreach to 1000+ industry partners'
-      ],
-      metrics: {
-        efficiency: '95% reduction in campaign creation time',
-        conversion: '300% increase in qualified leads'
-      }
-    },
+    // {
+    //   id: 2,
+    //   title: 'Intelligent Marketing Campaign Automation',
+    //   client: 'University Tech Transfer Office',
+    //   industry: 'Higher Education & Innovation Marketing',
+    //   challenge: 'The tech transfer office struggled to effectively market diverse university innovations to appropriate industry partners, investors, and potential licensees. Each technology required customized outreach campaigns, but manual segmentation and personalized messaging was overwhelming the small marketing team. Response rates were low and many promising technologies received insufficient market exposure.',
+    //   solution: 'Built an AI-powered marketing automation platform that analyzes each new technology disclosure and automatically generates multi-channel marketing campaigns. The system uses natural language processing to understand the innovation\'s technical details and market potential, then creates targeted campaigns including email sequences, social media content, industry-specific landing pages, and personalized outreach to relevant contacts in the CRM. Machine learning algorithms continuously optimize messaging and targeting based on engagement data.',
+    //   technologies: ['Marketing Automation (HubSpot API)', 'GPT-4 for Content Generation', 'Machine Learning', 'CRM Integration', 'Email Marketing', 'Analytics Dashboard'],
+    //   results: [
+    //     'over 300% increase in response inquiries',
+    //     '30 minutes saved per marketting campaign',
+    //     'Automated outreach to 1000+ industry partners'
+    //   ],
+    //   metrics: {
+    //     efficiency: '95% reduction in campaign creation time',
+    //     conversion: '300% increase in qualified leads'
+    //   }
+    // },
     {
       id: 3,
       title: 'Automated Social Media Content Creation',
@@ -94,7 +94,7 @@ export default function SolutionsPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-5xl md:text-7xl font-bold text-white px-4"
           >
-            <span className="text-blue-400">Solutions</span>
+            Case <span className="text-blue-400">Studies</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -107,10 +107,10 @@ export default function SolutionsPage() {
         </motion.div>
       </section>
 
-      {/* Solutions Section */}
+      {/* Case Studies Section */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20 lg:space-y-24">
-          {solutions.map((study, idx) => (
+          {caseStudies.map((study, idx) => (
             <motion.div
               key={study.id}
               initial={{ opacity: 0, y: 50 }}
@@ -273,7 +273,7 @@ export default function SolutionsPage() {
               <h4 className="text-xl font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-100">
                 <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
-                <li><a href="/solutions" className="hover:text-white cursor-pointer transition">Solutions</a></li>
+                <li className="hover:text-white cursor-pointer transition">Case Studies</li>
               </ul>
             </div>
 
