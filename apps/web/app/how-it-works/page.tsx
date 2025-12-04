@@ -319,7 +319,7 @@ export default function HowItWorksPage() {
             >
               <div className="p-4 sm:p-6 bg-red-500/10 border border-red-500/20 rounded-xl">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                  ❌ Generic Solutions
+                  Generic Solutions
                 </h3>
                 <ul className="space-y-2 sm:space-y-3 text-zinc-400 text-sm sm:text-base">
                   <li className="flex items-start gap-2">
@@ -355,7 +355,7 @@ export default function HowItWorksPage() {
             >
               <div className="p-4 sm:p-6 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                  ✓ B Automations Custom Solutions
+                  B Automations Custom Solutions
                 </h3>
                 <ul className="space-y-2 sm:space-y-3 text-zinc-400 text-sm sm:text-base">
                   <li className="flex items-start gap-2">
