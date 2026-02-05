@@ -133,7 +133,6 @@ export default function PrivacyPage() {
               <h4 className="font-semibold text-white">Contact</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li>dbalogh@udel.edu</li>
-                <li>(717) 891-9419</li>
               </ul>
             </div>
           </div>

@@ -214,7 +214,6 @@ export default function ConsultationPage() {
                   dbalogh@udel.edu
                 </a>
               </p>
-              <p className="text-zinc-400 text-sm sm:text-base">(717) 891-9419</p>
                 </div>
           </motion.div>
         </div>
@@ -246,7 +245,6 @@ export default function ConsultationPage() {
               <h4 className="font-semibold text-white">Contact</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li>dbalogh@udel.edu</li>
-                <li>(717) 891-9419</li>
               </ul>
             </div>
           </div>

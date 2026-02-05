@@ -47,24 +47,24 @@ export default function CaseStudiesPage() {
         coverage: '50,000+ companies monitored continuously'
       }
     },
-    // {
-    //   id: 2,
-    //   title: 'Intelligent Marketing Campaign Automation',
-    //   client: 'University Tech Transfer Office',
-    //   industry: 'Higher Education & Innovation Marketing',
-    //   challenge: 'The tech transfer office struggled to effectively market diverse university innovations to appropriate industry partners, investors, and potential licensees. Each technology required customized outreach campaigns, but manual segmentation and personalized messaging was overwhelming the small marketing team. Response rates were low and many promising technologies received insufficient market exposure.',
-    //   solution: 'Built an AI-powered marketing automation platform that analyzes each new technology disclosure and automatically generates multi-channel marketing campaigns. The system uses natural language processing to understand the innovation\'s technical details and market potential, then creates targeted campaigns including email sequences, social media content, industry-specific landing pages, and personalized outreach to relevant contacts in the CRM. Machine learning algorithms continuously optimize messaging and targeting based on engagement data.',
-    //   technologies: ['Marketing Automation (HubSpot API)', 'GPT-4 for Content Generation', 'Machine Learning', 'CRM Integration', 'Email Marketing', 'Analytics Dashboard'],
-    //   results: [
-    //     'over 300% increase in response inquiries',
-    //     '30 minutes saved per marketting campaign',
-    //     'Automated outreach to 1000+ industry partners'
-    //   ],
-    //   metrics: {
-    //     efficiency: '95% reduction in campaign creation time',
-    //     conversion: '300% increase in qualified leads'
-    //   }
-    // },
+    {
+      id: 2,
+      title: 'Intelligent Marketing Campaign Automation',
+      client: 'University Tech Transfer Office',
+      industry: 'Higher Education & Innovation Marketing',
+      challenge: 'The tech transfer office struggled to effectively market diverse university innovations to appropriate industry partners, investors, and potential licensees. Each technology required customized outreach campaigns, but manual segmentation and personalized messaging was overwhelming the small marketing team. Response rates were low and many promising technologies received insufficient market exposure.',
+      solution: 'Built an AI-powered marketing automation platform that analyzes each new technology disclosure and automatically generates multi-channel marketing campaigns. The system uses natural language processing to understand the innovation\'s technical details and market potential, then creates targeted campaigns including email sequences, social media content, industry-specific landing pages, and personalized outreach to relevant contacts in the CRM. Machine learning algorithms continuously optimize messaging and targeting based on engagement data.',
+      technologies: ['Marketing Automation (HubSpot API)', 'GPT-4 for Content Generation', 'Machine Learning', 'CRM Integration', 'Email Marketing', 'Analytics Dashboard'],
+      results: [
+        'over 300% increase in response inquiries',
+        '30 minutes saved per marketting campaign',
+        'Automated outreach to 1000+ industry partners'
+      ],
+      metrics: {
+        efficiency: '95% reduction in campaign creation time',
+        conversion: '300% increase in qualified leads'
+      }
+    },
     {
       id: 3,
       title: 'Automated Social Media Content Creation',
@@ -302,7 +302,6 @@ export default function CaseStudiesPage() {
               <h4 className="text-xl font-semibold text-white">Contact</h4>
               <ul className="space-y-2 text-sm text-zinc-100">
                 <li>dbalogh@udel.edu</li>
-                <li>(717) 891-9419</li>
               </ul>
             </div>
           </div>
