@@ -89,7 +89,7 @@ export default function CaseStudiesPage() {
     {
       id: 4,
       title: 'AI-Assisted Precision Engineering Analysis for EUV Reticle Handling',
-      client: 'Semiconductor Lithography Component Design',
+      client: 'ASML',
       industry: 'Semiconductor & Precision Engineering',
       challenge: 'A spring-clip mechanism for an EUV reticle needed to survive real operational loads while staying precise to within microns. Manual multi-physics analysis across materials and load cases would have taken days.',
       solution: 'Ran AI-driven structural, strain, and compliance analysis across PETG, PEEK, and Al 6061-T6. Compressed days of analysis into hours, identified the dominant failure point, and derived a hard 0.83mm pad thickness limit for sub-5μm displacement precision.',
