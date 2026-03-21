@@ -1,69 +1,72 @@
-'use client';
-
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
-import ScrollVideoSection from '@/components/ScrollVideoSection';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Navigation Bar */}
+    <div className="min-h-screen bg-zinc-950">
       <Navigation />
-      
-      {/* Scroll-Driven Video Section with Hero */}
-      <ScrollVideoSection
-        videoSrc="/parallax-background-optimized.mp4"
-        posterSrc="/parallax-poster.jpg"
-        height="h-[400vh]"
-        contents={[
-          {
-            startProgress: 0,
-            endProgress: 0.2,
-            badge: "Enterprise Automation Solutions",
-            title: (
-              <>
-                <span className="text-blue-400">B Automations</span>
-              </>
-            ),
-            description: "Engineering intelligent systems that drive operational excellence and exponential growth",
-            showButtons: true
-          },
-          {
-            startProgress: 0.2,
-            endProgress: 0.4,
-            badge: "About Us",
-            title: "Pioneering Autonomous Business Operations",
-            description: "We architect enterprise-grade automation infrastructure leveraging artificial intelligence, machine learning, and advanced workflow orchestration"
-          },
-          {
-            startProgress: 0.4,
-            endProgress: 0.6,
-            badge: "Client Excellence",
-            title: "100% Satisfaction Rate",
-            description: ""
-          },
-          {
-            startProgress: 0.6,
-            endProgress: .8,
-            badge: "Strategic Partnership",
-            title: "Elevate Your Operational Capacity",
-            description: "Join industry leaders leveraging B Automations' proven methodology for transformative business outcomes"
-          }
-        ]}
-      />
 
-      {/* Services & Contact Section */}
-      <section className="relative min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto w-full space-y-12 sm:space-y-16 relative">
-          {/* Subtle background glow */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06),transparent_70%)] blur-3xl" />
+      {/* Hero Section */}
+      <section className="bg-zinc-950 pt-32 pb-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          <div className="inline-block bg-zinc-900 text-zinc-400 text-sm font-medium px-4 py-1.5 rounded-full border border-zinc-800">
+            Enterprise Automation Solutions
+          </div>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight">
+            <span className="text-blue-400">B Automations</span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto">
+            Engineering intelligent systems that drive operational excellence and exponential growth
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Link href="/consultation">
+              <button className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all text-base">
+                Book a Consultation
+              </button>
+            </Link>
+            <Link href="/solutions">
+              <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-500 hover:bg-zinc-900 transition-all text-base">
+                Explore Solutions
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Strip */}
+      <section className="bg-zinc-900 py-12 px-4 sm:px-6 lg:px-8 border-b border-zinc-800">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Pioneering Autonomous Business Operations</h2>
+          <p className="text-zinc-400 text-base sm:text-lg max-w-3xl mx-auto">
+            We architect enterprise-grade automation infrastructure leveraging artificial intelligence, machine learning, and advanced workflow orchestration
+          </p>
+          <div className="flex flex-wrap justify-center gap-12 pt-4">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-400">100%</div>
+              <div className="text-sm text-zinc-500 mt-1">Client Satisfaction</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-400">5</div>
+              <div className="text-sm text-zinc-500 mt-1">Enterprise Deployments</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-400">$2M+</div>
+              <div className="text-sm text-zinc-500 mt-1">Value Delivered</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="bg-zinc-950 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">Our Services</h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">Comprehensive automation solutions tailored for enterprise needs</p>
           </div>
 
-          {/* Services */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 title: 'Enterprise AI Integration',
@@ -76,119 +79,76 @@ export default function Home() {
               {
                 title: 'Predictive Analytics Platform',
                 description: 'Transform raw data streams into strategic intelligence through automated ETL pipelines and ML-powered forecasting'
+              },
+              {
+                title: 'AI-Assisted Engineering Analysis',
+                description: 'Run multi-physics structural, strain, and compliance analyses in hours, not days. Material comparisons, failure point identification, and precision tolerance validation driven by AI'
               }
             ].map((service, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: idx * 0.15,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-              >
-                <Card className="bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 hover:border-blue-500/30 transition-all h-full">
-                  <CardHeader>
-                    <CardTitle className="text-white text-xl">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-zinc-400">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <Card key={idx} className="bg-zinc-900 border-zinc-800 hover:border-blue-500/40 transition-all h-full">
+                <CardHeader>
+                  <CardTitle className="text-white text-xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-zinc-400 text-sm sm:text-base">
+                    {service.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Contact CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center space-y-6 pt-8 relative z-10"
-          >
-            <motion.h3
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white px-4"
-            >
-              Scale Your Operations Intelligently
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto px-4"
-            >
-              Partner with industry leaders who trust <span className="text-blue-400 font-semibold">B Automations</span> to deliver mission-critical automation infrastructure
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
-            >
-              <Link href="/consultation" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-base sm:text-lg">
-                  Book a Consultation
-                </button>
-              </Link>
-              <Link href="/solutions" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-zinc-700 hover:border-zinc-600 transition-all text-base sm:text-lg">
-                  Explore Solutions
-                </button>
-              </Link>
-            </motion.div>
-          </motion.div>
+      {/* CTA Section */}
+      <section className="bg-zinc-900 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-zinc-800">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Scale Your Operations Intelligently</h2>
+          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+            Partner with industry leaders who trust <span className="text-blue-400 font-semibold">B Automations</span> to deliver mission-critical automation infrastructure
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+            <Link href="/consultation">
+              <button className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all">
+                Book a Consultation
+              </button>
+            </Link>
+            <Link href="/solutions">
+              <button className="w-full sm:w-auto px-8 py-4 border border-zinc-700 hover:border-zinc-500 text-white font-semibold rounded-full hover:bg-zinc-800 transition-all">
+                Explore Solutions
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-20 bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+      <footer className="bg-black border-t border-zinc-900 text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
-            {/* Company Info */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
-              <p className="text-zinc-400 text-sm">
-                Enterprise automation solutions powered by AI
-              </p>
+              <h3 className="text-xl font-bold text-blue-400">B Automations</h3>
+              <p className="text-zinc-500 text-sm">Enterprise automation solutions powered by AI</p>
             </div>
-
-            {/* Quick Links */}
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
-                <li><a href="/solutions" className="hover:text-white cursor-pointer transition">Solutions</a></li>
+              <ul className="space-y-2 text-sm text-zinc-500">
+                <li><a href="/about" className="hover:text-white transition">About</a></li>
+                <li><a href="/solutions" className="hover:text-white transition">Solutions</a></li>
               </ul>
             </div>
-
-            {/* Contact */}
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Contact</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <ul className="space-y-2 text-sm text-zinc-500">
                 <li>dbalogh@udel.edu</li>
               </ul>
             </div>
           </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-zinc-500 text-sm">
-              © 2025 B Automations
-            </p>
-            <div className="flex gap-6 text-sm text-zinc-500">
-              <a href="/privacy" className="hover:text-white cursor-pointer transition">Privacy</a>
-              <a href="/terms" className="hover:text-white cursor-pointer transition">Terms</a>
+          <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-zinc-600 text-sm">© 2025 B Automations</p>
+            <div className="flex gap-6 text-sm text-zinc-600">
+              <a href="/privacy" className="hover:text-white transition">Privacy</a>
+              <a href="/terms" className="hover:text-white transition">Terms</a>
             </div>
           </div>
         </div>

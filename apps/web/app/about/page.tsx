@@ -1,80 +1,44 @@
-'use client';
-
 import Navigation from '@/components/Navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { motion } from 'framer-motion';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
-      {/* Navigation Bar */}
+    <div className="min-h-screen bg-black">
       <Navigation />
-      
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-full h-full max-w-4xl bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] blur-3xl" />
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 text-center space-y-4 sm:space-y-6 max-w-4xl"
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl sm:text-5xl md:text-7xl font-bold text-white px-4"
-          >
+      {/* Hero Section */}
+      <section className="bg-black pt-32 pb-16 px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white">
             About <span className="text-blue-400">B Automations</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-base sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto px-4"
-          >
+          </h1>
+          <p className="text-base sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto">
             Pioneering the future of enterprise automation through intelligent systems and innovative technology solutions
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </section>
 
       {/* Mission Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto w-full space-y-16 sm:space-y-20 lg:space-y-24">
-          {/* Our Story */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-4 sm:space-y-6"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-12 px-4">
+      <section className="bg-zinc-950 px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="max-w-7xl mx-auto w-full space-y-16 sm:space-y-20">
+          {/* Our Mission */}
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-12">
               Our Mission
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-zinc-400 text-center max-w-4xl mx-auto leading-relaxed px-4">
-              At B Automations, we believe that intelligent automation is the key to unlocking unprecedented 
-              operational efficiency and business growth. Our mission is to empower organizations with 
-              cutting-edge automation solutions that transform complex workflows into streamlined, 
+            <p className="text-base sm:text-lg md:text-xl text-zinc-400 text-center max-w-4xl mx-auto leading-relaxed">
+              At B Automations, we believe that intelligent automation is the key to unlocking unprecedented
+              operational efficiency and business growth. Our mission is to empower organizations with
+              cutting-edge automation solutions that transform complex workflows into streamlined,
               intelligent processes.
             </p>
-          </motion.div>
+          </div>
 
           {/* Core Values */}
           <div className="space-y-8 sm:space-y-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4"
-            >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center">
               Our Core Values
-            </motion.h2>
-            
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {[
                 {
@@ -90,44 +54,26 @@ export default function AboutPage() {
                   description: 'Delivering production-ready, enterprise-grade solutions with meticulous attention to detail and unwavering quality standards'
                 }
               ].map((value, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: idx * 0.15,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                >
-                  <Card className="bg-gradient-to-br from-zinc-900 to-zinc-950 border-zinc-800 hover:border-blue-500/30 transition-all h-full">
-                    <CardHeader>
-                      <CardTitle className="text-white text-xl sm:text-2xl">{value.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="text-zinc-400 text-sm sm:text-base">
-                        {value.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <Card key={idx} className="bg-zinc-900 border-zinc-800 hover:border-blue-500/40 transition-all h-full">
+                  <CardHeader>
+                    <CardTitle className="text-white text-xl sm:text-2xl">{value.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-zinc-400 text-sm sm:text-base">
+                      {value.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
 
           {/* Our Approach */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-6 sm:space-y-8"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4">
+          <div className="space-y-6 sm:space-y-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center">
               Our Approach
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
               {[
                 {
                   title: 'Strategic Discovery',
@@ -146,100 +92,61 @@ export default function AboutPage() {
                   description: 'Ongoing monitoring, analytics, and enhancement to maximize ROI and system efficiency'
                 }
               ].map((step, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: idx * 0.1,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                  className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 sm:p-6 hover:border-blue-500/30 transition-all"
-                >
+                <div key={idx} className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 sm:p-6 hover:border-blue-500/40 transition-all">
                   <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{step.title}</h3>
                   <p className="text-zinc-400 text-sm sm:text-base">{step.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-8 sm:pt-12 px-4"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-8 sm:pt-12 border-t border-zinc-900">
             {[
               { stat: '5', label: 'Enterprise Deployments' },
               { stat: '100%', label: 'Client Satisfaction' },
               { stat: '$2M+', label: 'Value Delivered' },
             ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: idx * 0.1,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="text-center space-y-1 sm:space-y-2"
-              >
+              <div key={idx} className="text-center space-y-1 sm:space-y-2">
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-400">
                   {item.stat}
                 </div>
-                <div className="text-zinc-400 text-xs sm:text-sm md:text-base">
+                <div className="text-zinc-500 text-xs sm:text-sm md:text-base">
                   {item.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 text-white py-12 sm:py-16">
+      <footer className="bg-black border-t border-zinc-900 text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
-            {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-blue-400">B Automations</h3>
-              <p className="text-zinc-400 text-sm">
-                Enterprise automation solutions powered by AI
-              </p>
+              <p className="text-zinc-500 text-sm">Enterprise automation solutions powered by AI</p>
             </div>
-
-            {/* Quick Links */}
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li><a href="/about" className="hover:text-white cursor-pointer transition">About</a></li>
-                <li><a href="/solutions" className="hover:text-white cursor-pointer transition">Solutions</a></li>
+              <ul className="space-y-2 text-sm text-zinc-500">
+                <li><a href="/about" className="hover:text-white transition">About</a></li>
+                <li><a href="/solutions" className="hover:text-white transition">Solutions</a></li>
               </ul>
             </div>
-
-            {/* Contact */}
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Contact</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <ul className="space-y-2 text-sm text-zinc-500">
                 <li>dbalogh@udel.edu</li>
               </ul>
             </div>
           </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-zinc-500 text-sm">
-              © 2025 B Automations
-            </p>
-            <div className="flex gap-6 text-sm text-zinc-500">
-              <a href="/privacy" className="hover:text-white cursor-pointer transition">Privacy</a>
-              <a href="/terms" className="hover:text-white cursor-pointer transition">Terms</a>
+          <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-zinc-600 text-sm">© 2025 B Automations</p>
+            <div className="flex gap-6 text-sm text-zinc-600">
+              <a href="/privacy" className="hover:text-white transition">Privacy</a>
+              <a href="/terms" className="hover:text-white transition">Terms</a>
             </div>
           </div>
         </div>
@@ -247,5 +154,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-

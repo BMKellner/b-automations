@@ -54,7 +54,7 @@ export default function TermsPage() {
           <div className="space-y-3 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-bold text-white">4. Intellectual Property</h2>
             <p className="text-zinc-400 leading-relaxed text-sm sm:text-base">
-              All content on this website—including logos, text, images, and code—is the property of BAutomation or its licensors. You may not copy, reproduce, or distribute our content without our written permission.
+              All content on this website, including logos, text, images, and code, is the property of BAutomation or its licensors. You may not copy, reproduce, or distribute our content without our written permission.
             </p>
           </div>
 
