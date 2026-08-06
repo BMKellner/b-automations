@@ -10,9 +10,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-zinc-950 pt-32 pb-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          <div className="inline-block bg-zinc-900 text-zinc-400 text-sm font-medium px-4 py-1.5 rounded-full border border-zinc-800">
-            Enterprise Automation Solutions
-          </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight">
             <span className="text-blue-400">B Automations</span>
           </h1>

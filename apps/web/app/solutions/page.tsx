@@ -42,31 +42,9 @@ export default function CaseStudiesPage() {
       ],
       metrics: {
         invested: '$2M+ invested using the tool',
-        roi: '4x return on investment in first year',
+        roi: '32% average YoY',
         coverage: '50,000+ companies monitored continuously'
       }
-    },
-    {
-      id: 5,
-      title: 'Foliage: AI-Powered Resume-to-Portfolio Builder',
-      client: 'Job Seekers, Students, Freelancers & Career Changers',
-      industry: 'Career Technology & Productivity',
-      challenge: 'Building a professional portfolio website from scratch requires 3-6 hours of manual data entry, design decisions, and content writing — time and skills that most job seekers, students, and freelancers simply do not have.',
-      solution: 'Built Foliage, an AI-powered builder that uses GPT-4o to parse an uploaded resume and instantly generate a fully structured portfolio. Users pick from 10 professionally designed templates in a live gallery, then customize every section in a three-panel editor with real-time preview. The finished site downloads as a fully self-contained HTML file or saves to cloud storage via Supabase. No coding, no design skills, no manual data entry.',
-      technologies: ['GPT-4o (AI Resume Parsing)', 'Supabase (Cloud Sync)', 'Next.js', 'Three-Panel Live Editor', 'HTML Export', 'Google SSO', 'Drag-and-Drop Sections'],
-      results: [
-        'Resume to finished portfolio in under 20 minutes',
-        '90-95% reduction in time vs. manual portfolio building',
-        '10 professionally designed templates with live preview',
-        'Fully self-contained HTML export — no hosting required',
-        'Multi-resume support with instant AI re-generation'
-      ],
-      metrics: {
-        efficiency: '90-95% time reduction',
-        coverage: '10 templates',
-        conversion: '~30 sec to parse a full resume'
-      },
-      link: 'https://fragile-paradox-git-dev-bens-projects-a926fda6.vercel.app'
     },
     {
       id: 2,
@@ -131,11 +109,8 @@ export default function CaseStudiesPage() {
       {/* Hero Section */}
       <section className="bg-zinc-950 pt-32 pb-16 px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <Badge className="mb-4 text-xs sm:text-sm px-3 sm:px-4 py-1 bg-zinc-900 text-zinc-400 border-zinc-800">
-            Client Success Stories
-          </Badge>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white">
-            Case <span className="text-blue-400">Studies</span>
+            Client Success <span className="text-blue-400">Stories</span>
           </h1>
           <p className="text-base sm:text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto">
             Real-world automation solutions delivering measurable business impact across diverse industries
@@ -143,7 +118,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Case Studies Section */}
+      {/* Client Success Stories Section */}
       <section className="bg-zinc-950 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20">
           {caseStudies.map((study) => (
@@ -275,7 +250,7 @@ export default function CaseStudiesPage() {
               <h4 className="text-xl font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-zinc-500">
                 <li><a href="/about" className="hover:text-white transition">About</a></li>
-                <li className="cursor-default">Case Studies</li>
+                <li className="cursor-default">Client Success Stories</li>
               </ul>
             </div>
             <div className="space-y-4">
