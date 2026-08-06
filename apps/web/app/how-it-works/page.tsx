@@ -1,294 +1,304 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Reveal from '@/components/Reveal';
 import { Badge } from '@/components/ui/badge';
+
+export const metadata: Metadata = {
+  title: 'How It Works - B Automations',
+  description:
+    'How we design, build, and deploy automation systems engineered for your operations, built on proven components so you get a custom fit without a custom-build timeline.',
+};
 
 export default function HowItWorksPage() {
   const processSteps = [
     {
       number: '01',
       title: 'Discovery & Deep Dive',
-      description: 'We start by immersing ourselves in your business. Through comprehensive workshops, stakeholder interviews, and process audits, we gain an intimate understanding of your unique challenges, workflows, and objectives.',
-      details: [
-        'In-depth analysis of current operations',
-        'Identification of automation opportunities',
-        'Stakeholder requirement gathering',
-        'Technical infrastructure assessment'
-      ],
-      duration: '1-2 weeks'
+      duration: '1-2 weeks',
+      description:
+        'We embed with your team and audit the workflows that actually run your business, not the ones on the org chart. The goal is finding where automation compounds.',
+      activities: ['Process audit', 'Stakeholder interviews', 'Opportunity mapping', 'Infrastructure review'],
     },
     {
       number: '02',
       title: 'Custom Solution Design',
-      description: 'No templates. No off-the-shelf products. Every solution is architectured specifically for your needs. Our engineering team designs a bespoke automation system that integrates seamlessly with your existing infrastructure and addresses your exact pain points.',
-      details: [
-        'Tailored system architecture',
-        'Custom workflow design',
-        'Technology stack selection',
-        'Integration planning with existing systems'
-      ],
-      duration: '2-3 weeks'
+      duration: '2-3 weeks',
+      description:
+        'We assemble proven components into an architecture shaped around your workflows. Anything we have solved before, we do not solve twice. That is where the speed comes from.',
+      activities: ['System architecture', 'Workflow design', 'Stack selection', 'Integration planning'],
     },
     {
       number: '03',
       title: 'Iterative Development',
-      description: 'We build your solution using agile methodologies, delivering functional modules incrementally. You see progress continuously and provide feedback at every stage, ensuring the final product exceeds expectations.',
-      details: [
-        'Agile sprint-based development',
-        'Weekly progress demonstrations',
-        'Continuous client feedback integration',
-        'Quality assurance at every stage'
-      ],
-      duration: '4-12 weeks'
+      duration: '4-12 weeks',
+      description:
+        'Functional modules ship continuously. You see working software every week and steer it while it is still cheap to change direction.',
+      activities: ['Agile sprints', 'Weekly demos', 'Continuous feedback', 'QA at every stage'],
     },
     {
       number: '04',
-      title: 'Rigorous Testing & Refinement',
-      description: 'Before deployment, we conduct extensive testing in a staging environment that mirrors your production setup. Edge cases, error handling, and performance optimization are all validated to ensure flawless operation.',
-      details: [
-        'Comprehensive unit and integration testing',
-        'User acceptance testing (UAT)',
-        'Performance and load testing',
-        'Security vulnerability assessment'
-      ],
-      duration: '1-2 weeks'
+      title: 'Rigorous Testing',
+      duration: '1-2 weeks',
+      description:
+        'Every edge case, failure mode, and load scenario gets validated in a staging environment that mirrors production exactly.',
+      activities: ['Unit & integration', 'User acceptance', 'Performance & load', 'Security assessment'],
     },
     {
       number: '05',
       title: 'Seamless Deployment',
-      description: 'We deploy your custom automation solution with minimal disruption to operations. Our team manages the entire rollout process, provides comprehensive training, and ensures your team is confident using the new system.',
-      details: [
-        'Phased deployment strategy',
-        'Comprehensive team training',
-        'Documentation and user guides',
-        'Real-time deployment monitoring'
-      ],
-      duration: '1 week'
+      duration: '1 week',
+      description:
+        'A phased rollout with minimal interruption to operations, paired with the training and documentation your team needs to own the system.',
+      activities: ['Phased rollout', 'Team training', 'Documentation', 'Live monitoring'],
     },
     {
       number: '06',
       title: 'Ongoing Optimization',
-      description: "The relationship doesn't end at launch. We continuously monitor performance, gather user feedback, and optimize the system. As your business evolves, your automation solution evolves with it.",
-      details: [
-        'Performance monitoring and analytics',
-        'Regular optimization updates',
-        'Feature enhancements based on usage',
-        'Proactive maintenance and support'
-      ],
-      duration: 'Ongoing'
-    }
+      duration: 'Ongoing',
+      description:
+        'Launch is the midpoint, not the finish line. We monitor, tune, and extend the system as your business changes shape.',
+      activities: ['Performance analytics', 'Optimization updates', 'Feature growth', 'Proactive support'],
+    },
   ];
 
   const principles = [
     {
-      title: 'Zero Templates',
-      description: "We don't believe in one-size-fits-all. Every solution starts from a blank canvas, designed specifically for your business context and requirements."
+      title: 'Proven Foundations',
+      description:
+        "We build on components hardened across previous systems, so you never pay us to solve a solved problem.",
+    },
+    {
+      title: 'Momentum From Day One',
+      description:
+        'Working software in your hands early and often, with full visibility into progress and trade-offs.',
+    },
+    {
+      title: 'Custom Where It Counts',
+      description:
+        'Engineering effort goes into what makes your operation different, not into rebuilding the plumbing.',
     },
     {
       title: 'Deep Collaboration',
-      description: 'Your team knows your business best. We work closely with your stakeholders throughout the entire process, ensuring the solution truly meets your needs.'
+      description: 'Your team knows the business. We build in the open, alongside them.',
     },
     {
       title: 'Technology Agnostic',
-      description: "We select the best technology stack for your specific use case, not what we're comfortable with. Your requirements drive our technology choices."
-    },
-    {
-      title: 'Scalable Architecture',
-      description: 'Every solution is built to grow with your business. We design systems that can handle increased load, new features, and evolving requirements.'
-    },
-    {
-      title: 'Transparent Process',
-      description: "You have full visibility into development progress, timelines, and deliverables. No black boxes, no surprises. Just clear communication."
+      description: 'The requirements pick the stack, not our comfort zone.',
     },
     {
       title: 'Knowledge Transfer',
-      description: "We don't want you dependent on us. Comprehensive documentation and training ensure your team can maintain and enhance the solution."
-    }
+      description: 'Documentation and training so your team can own it without us.',
+    },
+  ];
+
+  const comparison = [
+    {
+      generic: 'Quick to switch on, then slow to bend to your needs',
+      custom: 'Shaped to you from day one, on components already proven',
+    },
+    {
+      generic: 'You reshape your processes to fit the software',
+      custom: 'The software is shaped around your processes',
+    },
+    {
+      generic: 'The one capability you need is on a roadmap',
+      custom: 'Your exact pain points are the specification',
+    },
+    {
+      generic: "You pay for modules you'll never open",
+      custom: 'Every feature earns its place in the build',
+    },
+    {
+      generic: 'Integration with your stack is your problem',
+      custom: 'It connects to the systems you already run',
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-zinc-950">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="bg-black pt-32 pb-16 px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
-        <div className="max-w-5xl mx-auto text-center space-y-6">
-          <Badge className="mb-4 text-xs sm:text-sm px-3 sm:px-4 py-1 bg-zinc-900 text-zinc-400 border-zinc-800">
-            Our Methodology
-          </Badge>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-zinc-950 pt-32 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-900">
+        {/* Ambient glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 -top-32 h-96"
+          style={{
+            background:
+              'radial-gradient(50% 60% at 50% 50%, rgba(59,130,246,0.10) 0%, rgba(59,130,246,0) 100%)',
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
             How It <span className="text-blue-400">Works</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-400 max-w-4xl mx-auto leading-relaxed">
-            Every solution is handcrafted and precisely engineered to solve your unique challenges.
-            No templates. No shortcuts. Just intelligent automation built exactly for you.
+          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+            Automation engineered for the way your business actually works,
+            and built fast, because we never start from scratch.
           </p>
         </div>
       </section>
 
-      {/* Core Philosophy Section */}
-      <section className="bg-zinc-950 px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
-          <div className="text-center space-y-4 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              Bespoke Solutions, Every Time
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-              Your business is unique. Your automation solution should be too. We don't adapt
-              your processes to fit our software. We build software that fits your processes perfectly.
-            </p>
-          </div>
+      {/* The case for custom */}
+      <section className="bg-zinc-900 px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-b border-zinc-800">
+        <div className="max-w-5xl mx-auto space-y-10 sm:space-y-14">
+          <Reveal>
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                Why Custom-Built Matters
+              </h2>
+              <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
+                Off-the-shelf software asks you to change how you operate.
+                A bespoke system does the adapting instead.
+              </p>
+            </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {principles.map((principle, idx) => (
-              <Card key={idx} className="bg-zinc-900 border-zinc-800 hover:border-blue-500/40 transition-all h-full">
-                <CardHeader>
-                  <CardTitle className="text-white text-lg sm:text-xl">
-                    {principle.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-zinc-400 text-sm sm:text-base">
-                    {principle.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Reveal>
+            <div className="rounded-2xl overflow-hidden border border-zinc-800">
+              {/* Column headers */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 bg-zinc-950">
+                <div className="px-5 py-4 sm:px-6">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-zinc-600">
+                    Generic Platforms
+                  </span>
+                </div>
+                <div className="px-5 py-4 sm:px-6 border-t sm:border-t-0 sm:border-l border-zinc-800 bg-blue-500/5">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                    B Automations
+                  </span>
+                </div>
+              </div>
+
+              {comparison.map((row, idx) => (
+                <div key={idx} className="grid grid-cols-1 sm:grid-cols-2 bg-zinc-900 border-t border-zinc-800">
+                  <div className="px-5 py-4 sm:px-6 sm:py-5 flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-700 flex-shrink-0" />
+                    <p className="text-sm sm:text-base text-zinc-500">{row.generic}</p>
+                  </div>
+                  <div className="px-5 py-4 sm:px-6 sm:py-5 flex items-start gap-3 border-t sm:border-t-0 sm:border-l border-zinc-800 bg-blue-500/5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                    <p className="text-sm sm:text-base text-zinc-200">{row.custom}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Process Steps Section */}
-      <section className="bg-black px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-zinc-900">
-        <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
-          <div className="text-center space-y-4 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              Our Custom Development Process
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto">
-              A proven methodology that transforms your unique challenges into intelligent,
-              automated solutions
-            </p>
-          </div>
+      {/* Process timeline */}
+      <section className="bg-zinc-950 px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
+          <Reveal>
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                From First Conversation to Live System
+              </h2>
+              <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
+                Six stages, with working software in your hands long before the last one.
+              </p>
+            </div>
+          </Reveal>
 
-          <div className="space-y-6 sm:space-y-8">
+          <div className="relative">
+            {/* Connecting rail */}
+            <div
+              aria-hidden
+              className="absolute left-[15px] sm:left-[19px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-500/50 via-zinc-800 to-transparent"
+            />
+
             {processSteps.map((step, idx) => (
-              <Card key={idx} className="bg-zinc-900 border-zinc-800 hover:border-blue-500/40 transition-all overflow-hidden">
-                <CardHeader className="space-y-3 sm:space-y-4 p-4 sm:p-6">
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-blue-600 flex items-center justify-center">
-                        <span className="text-2xl sm:text-3xl font-bold text-white">
-                          {step.number}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex-1 space-y-2 min-w-0">
-                      <div className="flex items-start sm:items-center justify-between flex-wrap gap-3 sm:gap-4">
-                        <CardTitle className="text-white text-xl sm:text-2xl md:text-3xl">
-                          {step.title}
-                        </CardTitle>
-                        <Badge variant="outline" className="text-zinc-400 border-zinc-700 text-xs sm:text-sm">
-                          {step.duration}
-                        </Badge>
-                      </div>
-                      <CardDescription className="text-zinc-300 text-sm sm:text-base leading-relaxed">
-                        {step.description}
-                      </CardDescription>
-                    </div>
+              <Reveal
+                key={step.number}
+                delay={idx * 60}
+                className={idx === processSteps.length - 1 ? '' : 'pb-10 sm:pb-12'}
+              >
+                <div className="relative pl-12 sm:pl-16">
+                  {/* Node */}
+                  <div className="absolute left-0 top-0 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 ring-4 ring-zinc-950">
+                    <span className="font-mono text-xs sm:text-sm font-semibold text-blue-400">
+                      {step.number}
+                    </span>
                   </div>
-                </CardHeader>
 
-                <CardContent className="p-4 sm:p-6">
-                  <div className="pl-0 sm:pl-[88px] lg:pl-[104px]">
-                    <h4 className="text-xs sm:text-sm font-semibold text-blue-400 mb-2 sm:mb-3">
-                      Key Activities:
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {step.details.map((detail, detailIdx) => (
-                        <div key={detailIdx} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
-                          <p className="text-zinc-400 text-xs sm:text-sm">{detail}</p>
-                        </div>
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:min-h-10">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        {step.title}
+                      </h3>
+                      <Badge
+                        variant="outline"
+                        className="text-[11px] font-medium text-zinc-500 border-zinc-800 bg-zinc-900/60"
+                      >
+                        {step.duration}
+                      </Badge>
+                    </div>
+
+                    <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+                      {step.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {step.activities.map((activity) => (
+                        <span
+                          key={activity}
+                          className="rounded-full border border-zinc-800 bg-zinc-900/80 px-2.5 py-1 text-[11px] sm:text-xs text-zinc-500"
+                        >
+                          {activity}
+                        </span>
                       ))}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Custom Section */}
-      <section className="bg-zinc-950 px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-zinc-900">
-        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-12">
-          <div className="space-y-4 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center">
-              Why Custom-Built Matters
-            </h2>
-            <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto">
-              Off-the-shelf solutions force you to change your business processes.
-              Custom solutions adapt to how you work.
+      {/* Principles */}
+      <section className="bg-zinc-900 px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-zinc-800">
+        <div className="max-w-5xl mx-auto space-y-10 sm:space-y-14">
+          <Reveal>
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                How We Work
+              </h2>
+              <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
+                Six commitments that hold on every engagement.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 sm:gap-y-10">
+            {principles.map((principle, idx) => (
+              <Reveal key={principle.title} delay={idx * 50}>
+                <div className="border-t border-zinc-800 pt-5 hover:border-blue-500/40 transition-colors">
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
+                    {principle.title}
+                  </h3>
+                  <p className="text-sm text-zinc-400 leading-relaxed">
+                    {principle.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <p className="text-center text-sm sm:text-base text-zinc-500 pt-2">
+              See what this looks like in practice:{' '}
+              <Link
+                href="/solutions"
+                className="text-blue-400 hover:text-blue-300 underline underline-offset-4 decoration-blue-400/30 hover:decoration-blue-300 transition-colors"
+              >
+                explore our solutions
+              </Link>
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-            <div className="p-4 sm:p-6 bg-zinc-900 border border-red-900/40 rounded-xl">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                Generic Solutions
-              </h3>
-              <ul className="space-y-2 sm:space-y-3 text-zinc-400 text-sm sm:text-base">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-1">•</span>
-                  <span>Force you to adapt your processes to the software</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-1">•</span>
-                  <span>Include features you don't need (and pay for)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-1">•</span>
-                  <span>Missing critical functionality specific to your needs</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-1">•</span>
-                  <span>Difficult integration with existing systems</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 mt-1">•</span>
-                  <span>Limited customization and flexibility</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="p-4 sm:p-6 bg-zinc-900 border border-blue-500/20 rounded-xl">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
-                B Automations Custom Solutions
-              </h3>
-              <ul className="space-y-2 sm:space-y-3 text-zinc-400 text-sm sm:text-base">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-1">•</span>
-                  <span>Built around your exact workflows and processes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-1">•</span>
-                  <span>Every feature serves a purpose for your business</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-1">•</span>
-                  <span>Addresses your specific pain points precisely</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-1">•</span>
-                  <span>Seamless integration with all existing tools</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400 mt-1">•</span>
-                  <span>Infinitely scalable and adaptable</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
